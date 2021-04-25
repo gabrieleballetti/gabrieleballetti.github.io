@@ -257,7 +257,6 @@ $$
 then, if we do not allow subnormals, the operation *underflows* and the results needs to be flushed to zero. In other words, if we stick to normals only, we lose the property $$x = y \iff x - y = 0$$. This is one of the main reasons modern standards always include subnormals.
 
 Now that normals and subnormals have been defined, we have appropriate tools to discuss what is maybe the most flashing and immediate property of floating point numbers: they are not evenly distributed on the real line. In a an hypothetical implementation of the floating point arithmetic with three bits for both mantissa and exponent, the distribution of floats is represented by the picture below ([source](https://github.com/gabrieleballetti/floating-point-charts/blob/main/floats_distribution.py)).
-https://github.com/gabrieleballetti/floating-point-charts/blob/main/floats_distribution.py
 
 ![float distribution](\assets\img\2021-04-25-floating-arithmetic\floats_distribution.png)
 
