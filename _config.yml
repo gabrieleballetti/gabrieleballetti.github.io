@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Gabriele Balletti's notes
+title: Gabriele Balletti's blog
 #author: Gabriele Balletti
 description: >- # this means to ignore newlines until "baseurl:"
   A place where I pretend to discuss math and computer science, but I'm actually just trying to understand stuff.
