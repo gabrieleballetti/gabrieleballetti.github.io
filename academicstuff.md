@@ -11,11 +11,12 @@ In early 2019 I left academia and I started working as a software developer in t
 
 # Publications
 
+- G. Balletti: Enumeration of lattice polytopes by their volume, *Discrete & Computational Geometry* 65 (2021) 1087–1122 [[arXiv](https://arxiv.org/abs/1811.03357)].
 - G. Balletti, M. Panizzut, B. Sturmfels: K3 Polytopes and their Quartic Surfaces, *Advances in Geometry* 21-1 (2021),  85--98 [[arXiv]](https://arxiv.org/abs/1806.02236).
-- G. Balletti: Enumeration of lattice polytopes by their volume, *Discrete & Computational Geometry* (2020) [[arXiv](https://arxiv.org/abs/1811.03357)].
 - G. Balletti, C. Borger: Families of lattice polytopes of mixed degree one, *Journal of Combinatorial Theory Series A* 173 (2020) [[arXiv](https://arxiv.org/abs/1904.01343)].
+- G. Balletti, C. Borger: Families of 3-dimensional polytopes of mixed degree one, *Proceedings of the Summer Workshop on Lattice Polytopes, Osaka, Japan, 23 July -- 10 August 2018*, 72--84 (2019).
 - G. Balletti, T. Hibi, M. Meyer and A. Tsuchiya: Laplacian simplices associated to digraphs, *Arkiv för Matematik* 56 (2018), 243--264 [[arXiv](https://arxiv.org/abs/1710.00252)].
-- G. Balletti, A. Higashitani: Universal inequalities in Ehrhart Theory, *Israel Journal of Mathematics 227*  (2018), 843--859 [[arXiv](https://arxiv.org/abs/1703.09600)].
+- G. Balletti, A. Higashitani: Universal inequalities in Ehrhart Theory, *Israel Journal of Mathematics* 227  (2018), 843--859 [[arXiv](https://arxiv.org/abs/1703.09600)].
 - G. Balletti, Connectivity through bounds for the Castelnuovo-Mumford regularity, *Journal of Combinatorial Theory Series A* 147 (2017), 46--54 [[arXiv](https://arxiv.org/abs/1412.5920)].
 
 
@@ -27,7 +28,6 @@ In early 2019 I left academia and I started working as a software developer in t
 
 ### Other
 
-- G. Balletti, C. Borger: Families of 3-dimensional polytopes of mixed degree one, *Proceedings of the Summer Workshop on Lattice Polytopes, Osaka, Japan, 23 July -- 10 August 2018*, 72--84 (2019).
 - G. Balletti, Classifications, volume bounds and universal Ehrhart inequalities of lattice polytopes, Doctoral thesis (2018)
 - G. Balletti, Classifications and volume bounds of lattice polytopes, Licentiate thesis (2017)
 
