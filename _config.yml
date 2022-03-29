@@ -38,8 +38,8 @@ plugins:
   - jekyll-paginate
 
 header_pages:
+  #- about.md
   - academicstuff.md
-#  - about.md
 
 paginate: 1 
 paginate_path: "/page:num/"
