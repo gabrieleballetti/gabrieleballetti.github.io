@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Academic stuff
-permalink: /academicstuff/
+title: Academic page
+permalink: /academicpage/
 ---
 
 # I left academia
