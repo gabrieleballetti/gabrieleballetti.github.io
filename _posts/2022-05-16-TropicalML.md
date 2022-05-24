@@ -69,7 +69,7 @@ And here is the algebraic tropical *quadric* (curve of degree two) it defines. I
 
 <img src="\assets\img\2022-05-16-TropicalML\tropical_curve.svg"  style="width:60%; display: block; margin-left: auto; margin-right: auto;" >
 
-As we increase the degree of the polynomials, curves get more complex. Here is what a degree fifteen tropical curve with random coefficients looks like (I made a [neat script](https://github.com/gabrieleballetti/tropical-curve-plotter) to plot such curves).
+As we increase the degree of the polynomials, curves get more complex. Here is what a degree fifteen tropical curve with random integer coefficients looks like (I made a [neat script](https://github.com/gabrieleballetti/tropical-curve-plotter) to plot such curves).
 
 <img src="\assets\img\2022-05-16-TropicalML\tropical_curve_random.svg"  style="width:60%; display: block; margin-left: auto; margin-right: auto;" >
 
