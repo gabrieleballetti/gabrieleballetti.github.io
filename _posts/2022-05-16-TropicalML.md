@@ -7,7 +7,7 @@ title:  "Piecewise linear activations: Machine Learning meets Tropical Geometry 
 
 > What tropical surfaces look like (a tropical quartic surface, from [this paper](https://arxiv.org/abs/1806.02236) )
 
-Activation functions decide what is to be fired to the following neuron in a neural network depending on the input signal received. Since they generally are the only nonlinear component in a model architecture, they are what truly allow networks to learn complex patterns, as without them network would only approximate linear functions (and most of their structure would be redundant). Although traditionally the sigmoid was the most common choice for an activation function, in modern neural network the default recommendation is to use the Rectified Linear Unit (ReLU) defined as $$x \mapsto \max(0,x)$$, or its more flexible version Leaky ReLU $$x \mapsto \max(ax,x)$$.
+Activation functions decide what is to be fired to the following neuron in a neural network depending on the input signal received. Since they generally are the only nonlinear component in a model architecture, they are what truly allows networks to learn complex patterns, as without them network would only approximate linear functions (and most of their structure would be redundant). Although traditionally the sigmoid was the most common choice for an activation function, in modern neural network the default recommendation is to use the Rectified Linear Unit (ReLU) defined as $$x \mapsto \max(0,x)$$, or its more flexible version Leaky ReLU $$x \mapsto \max(ax,x)$$.
 
 <img src="\assets\img\2022-05-16-TropicalML\activation_functions.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
 
