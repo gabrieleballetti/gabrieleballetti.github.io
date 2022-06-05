@@ -77,7 +77,7 @@ There are several clues that confirm that with these definitions we are onto som
 
 <img src="\assets\img\2022-05-16-TropicalML\bezout.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
 
-### Newton polytopes
+### Newton polytopes and Minkowski sums
 
 We saw that for univariate polynomials there is unique factorization, but the same does not hold for two or more variables. The following are two *irreducible* factorizations of the same polynomial, i.e. which cannot be factorized any further.
 
@@ -87,7 +87,7 @@ $$
 
 One can simply expand the expression above and verify that it is true, anyway there is a much better way to get a geometric intuition of what is going on. In order to do so we introduce the concept of *Newton polytopes* and *Minkowski sums*.
 
-**Given a polynomial in $$n$$ variables $$f(x_1, \ldots , x_n)$$, the *Newton polytope* $$\text{Newt}(f)$$ of $$f$$ is the convex hull of all the points $$(a_1, \ldots, a_n)$$ such that the monomial $$x_1^{a_1} \cdots x_n^{a_n}$$ appears in the expansion of $$f(x_1, \ldots , x_n)$$**.
+**Given a polynomial in $$n$$ variables $$f(x_1, \ldots , x_n)$$, the *Newton polytope* $$\text{Newt}(f)$$ of $$f$$ is the convex hull of all the points $$(a_1, \ldots, a_n) \in \mathbb{R}^n$$ such that the monomial $$x_1^{a_1} \cdots x_n^{a_n}$$ appears in the expansion of $$f(x_1, \ldots , x_n)$$** with some coefficient.
 
 As an example the polynomial
 
@@ -99,7 +99,7 @@ has the following hexagon as Newton polytope.
 
 <img src="\assets\img\2022-05-16-TropicalML\newt_hex.svg"  style="width:50%; display: block; margin-left: auto; margin-right: auto;" >
 
-In a way the Newton polygon refines the notion of degree of a polynomial, by keeping track of the extremal exponents appearing in the polynomial. For example, for univariate polynomials the Newton polytope is simply a segment from the lowest exponent to the highest exponent.
+In a way the Newton polytope refines the notion of degree of a polynomial, by keeping track of the extremal exponents appearing in the polynomial. For example, for univariate polynomials the Newton polytope is simply a segment from the lowest exponent to the highest exponent.
 
 When we multiply two polynomials, the resulting degree corresponds to the sum of the original degrees. In the case of the Newton polytopes we need to define a special sum that given two polytopes spits another polytope. **Given two polytopes $$P$$ and $$Q$$ we call their *Minkowski sum* $$P + Q$$ the set of all the points which can be expressed as the sum of a point in $$P$$ with a point in $$Q$$**, i.e.
 
@@ -109,14 +109,32 @@ One can intuitively think of the Minkowski sum of $$P$$ and $$Q$$ as the region 
 
 <img src="\assets\img\2022-05-16-TropicalML\minkowski_sum.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
 
-It is easy to see that this definition works well with Newton polytopes of product of polynomials. When we expand a product of two polynomials we compute - leaving for a second the coefficients aside - all the possible sums of one exponent of the first polynomial plus one exponent of the second. In other words, given two polynomials $$f$$ and $$g$$, **the Newton polygon of the product $$f \odot g$$ is the Minkowski sum of the Netwon polytopes of $$f$$ and $$g$$**, which is 
+It is easy to see that this definition works well with Newton polytopes of product of polynomials. When we expand a product of two polynomials we compute - leaving coefficients aside - all the possible sums of one exponent of the first polynomial plus one exponent of the second. In other words, given two polynomials $$f$$ and $$g$$, **the Newton polytope of the product $$f \odot g$$ is the Minkowski sum of the Newton polytopes of $$f$$ and $$g$$**, which is 
 
 $$
 \text{Newt}(fg) = \text{Newt}(f) + \text{Newt}(g).
 $$
 
-We can now give a better explanation to the example above where a polynomial had multiple factorizations. If we take each of the Netwon polytopes of each factor and we calculate their Minkowski sum, and we do this for both factorizations, we obtain the same Minkowski sum in two different ways.
+We can now give a better explanation to the example above where a polynomial had multiple factorizations. If we take each of the Newton polytopes of each factor and we calculate their Minkowski sum, and we do this for both factorizations, we obtain the same Minkowski sum.
 
 <img src="\assets\img\2022-05-16-TropicalML\double_minkowski.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
 
+### Subdivisions of Newton polytopes
 
+Newton polytopes have much deeper connections with tropical polynomials than what we have seen so far. In the previous section we have ignored the role of coefficient of polynomial, as we have mostly focused on exponents only. Coefficient of a polynomial can be used to induce a *subdivision* of its Newton polytope, which is tightly related to the tropical hypersurface defined by the polynomial. The trick will be to add another dimension to the space where the Newton polytope lives, and store the coefficients in the extra coordinate.
+
+Let $$f(x_1, \ldots, x_n)$$ be a polynomial in $$n$$ variables, we build the subdivision of its Newton polytope $$\text{Newt}(P)$$ in three steps.
+
+1. Build the polytope $$P_f$$ as the convex hull of all the points $$(a_1, \ldots, a_n, c) \in \mathbb{R}^{n+1}$$ such that the monomial $$x_1^{a_1} \cdots x_n^{a_n}$$ appears in the expansion of $$f(x_1, \ldots , x_n)$$ with $$c$$ as a coefficient. From $$P_f$$ is an extended version of the Newton polytope $$\text{Newt}(P)$$, carrying extra information about the coefficients.
+2. Isolate the *upper hull* of $$P_f$$, i.e. the set of its $$n$$-dimensional faces whose outer normals have positive last coordinate. This can be though as the part of the surface of $$P_f$$ which can be seen *from above*.
+3. Project down the upper hull by dropping the last coordinate, inducing a subdivision of $$\text{Newt}(P)$$.
+
+As an example, consider the polynomial 
+
+$$
+f(x,y) = 0 \oplus 1 \odot x \oplus 1 \odot y \oplus 0 \odot x^2 \oplus 1 \odot xy \oplus 0 \odot y^2,
+$$
+
+then the polytope $$P_f$$ and the induced subdivision on $$\text{Newt}(P)$$ are depicted below.
+
+<img src="\assets\img\2022-05-16-TropicalML\subdivision.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
