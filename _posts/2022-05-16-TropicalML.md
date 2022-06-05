@@ -55,11 +55,11 @@ $$q_a(x) = x^2 \oplus a \odot x \oplus 0 = \max \{ 2x, x + a, 0 \}$$
 
 the term $$a \odot x$$ plays no role whenever $$a \leq 0$$. In particular, even being different as polynomials (because they have different coefficients), $$q_{-1}(x)$$ and $$q_0(x)$$ define the same polynomial function $$x \mapsto \max(2x, 0)$$. So the correct way to state the Tropical Fundamental Theorem of Algebra is that *every tropical univariate polynomial can be replaced by an equivalent polynomial (defining the same polynomial function) that can be factored - in a unique way - into linear factors*.
 
-To summarize, for univariate tropical polynomials, the roots are those elements in the domain belonging at least to two linear regions (or, equivalently, for which the maximum is attained at least twice) and, to confirm that this definition is meaningful, they appear in the "unique" factorization of the polynomial. 
+To summarize, for univariate tropical polynomials, the roots are those elements in the domain belonging at least to two linear regions (or, equivalently, for which the maximum is attained at least twice) and, to confirm that this definition is meaningful, they appear in the "unique" factorization of the polynomial.
 
 ### Tropical curves, surfaces and hypersurfaces
 
-But what happens in higher dimensions, when we have more variables other than just $$x$$? In the classical setting, the concept of roots is extended as the *vanishing locus* or the *zeroes* of a polynomial, i.e. all the points in the domain where the polynomial evaluate to zero. These sets are called *algebraic curves* in $$\mathbb{R}^2$$ (such as an ellipse) for bivariate polynomials, *algebraic surfaces* $$\mathbb{R}^3$$ (such as a sphere) for trivariate polynomials, or - more generally - *algebraic hypersurfaces* when the dimension is higher or non specified. In the tropical setting the concept of tropical roots is extended by focusing on the linear regions: *given a polynomial, the algebraic tropical curve/surface/hypersurface defined by the polynomial is the set of all the points belonging to at least two linear regions*. 
+But what happens in higher dimensions, when we have more variables other than just $$x$$? In the classical setting, the concept of roots is extended as the *vanishing locus* or the *zeroes* of a polynomial, i.e. all the points in the domain where the polynomial evaluate to zero. These sets are called *algebraic curves* in $$\mathbb{R}^2$$ (such as an ellipse) for bivariate polynomials, *algebraic surfaces* $$\mathbb{R}^3$$ (such as a sphere) for trivariate polynomials, or - more generally - *algebraic hypersurfaces* when the dimension is higher or non specified. In the tropical setting the concept of tropical roots is extended by focusing on the linear regions: **given a polynomial, the *algebraic tropical curve/surface/hypersurface* defined by the polynomial is the set of all the points belonging to at least two linear regions**. 
 
 Here is an example of how (the function defined by) a degree two tropical polynomial in two variables looks like.
 
@@ -73,6 +73,50 @@ As we increase the degree of the polynomials, curves get more complex. Here is w
 
 <img src="\assets\img\2022-05-16-TropicalML\tropical_curve_random.svg"  style="width:60%; display: block; margin-left: auto; margin-right: auto;" >
 
-There are several clues that confirm that with these definitions we are onto something. Every mathematician's favorite example is the tropical version of *Bézout's Theorem*. In the classical settings it states that two algebraic curves defined by polynomials of degrees $$c$$ and $$d$$ intersects in $$cd$$ points. Here the result is loosely stated, as it holds for "generic" curves defined on an algebraically closed field, and one need a notion of multiplicity when there is tangency. Usually it is stated for projective curves, as it takes a cleaner form. Anyway it should not sound too weird: two lines intersect in one point, a line and an ellipse intersect in two (possibly complex) points, two ellipses intersect in four (possibly complex) points, and so forth. The very same theorem holds tropically, and - if possible - it holds in a cleaner way, meaning that we do not need extra hypotheses such as working with complex numbers, or assuming that the curves have been chosen "generically" enough. All we need a concept of *stable* intersection to handle the cases where two curves are aligned (if you want to know more, have a look to Corollary 1.3.4 in the referenced book). In the example below we can see a line (orange, a degree one algebraic curve) intersecting a cubic (blue, a degree three algebraic curve) in three points, both in a classical and tropical environment.
+There are several clues that confirm that with these definitions we are onto something. Every mathematician's favorite example is the tropical version of ***Bézout's Theorem***. In the classical settings it states that two algebraic curves defined by polynomials of degrees $$c$$ and $$d$$ intersects in $$cd$$ points. Here the result is loosely stated, as it holds for "generic" curves defined on an algebraically closed field, and one need a notion of multiplicity when there is tangency. Usually it is stated for projective curves, as it takes a cleaner form. Anyway it should not sound too weird: two lines intersect in one point, a line and an ellipse intersect in two (possibly complex) points, two ellipses intersect in four (possibly complex) points, and so forth. The very same theorem holds tropically, and - if possible - it holds in a cleaner way, meaning that we do not need extra hypotheses such as working with complex numbers, or assuming that the curves have been chosen "generically" enough. All we need a concept of *stable* intersection to handle the cases where two curves are aligned (if you want to know more, have a look to Corollary 1.3.4 in the referenced book). In the example below we can see a line (orange, a degree one algebraic curve) intersecting a cubic (blue, a degree three algebraic curve) in three points, both in a classical and tropical environment.
 
 <img src="\assets\img\2022-05-16-TropicalML\bezout.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
+
+### Newton polytopes
+
+We saw that for univariate polynomials there is unique factorization, but the same does not hold for two or more variables. The following are two *irreducible* factorizations of the same polynomial, i.e. which cannot be factorized any further.
+
+$$
+(x \oplus 0) \odot (y \oplus 0) \odot (x \odot y \oplus 0 ) = (x \odot y \oplus x \oplus 0) \odot (x \odot y \oplus y \oplus 0)
+$$
+
+One can simply expand the expression above and verify that it is true, anyway there is a much better way to get a geometric intuition of what is going on. In order to do so we introduce the concept of *Newton polytopes* and *Minkowski sums*.
+
+**Given a polynomial in $$n$$ variables $$f(x_1, \ldots , x_n)$$, the *Newton polytope* $$\text{Newt}(f)$$ of $$f$$ is the convex hull of all the points $$(a_1, \ldots, a_n)$$ such that the monomial $$x_1^{a_1} \cdots x_n^{a_n}$$ appears in the expansion of $$f(x_1, \ldots , x_n)$$**.
+
+As an example the polynomial
+
+$$
+0 \oplus 0 \odot x \oplus 0 \odot y \oplus 0 \odot x^2 y \oplus 0 \odot x  y^2 \oplus 0 \odot x^2 y^2 
+$$ 
+
+has the following hexagon as Newton polytope.
+
+<img src="\assets\img\2022-05-16-TropicalML\newt_hex.svg"  style="width:50%; display: block; margin-left: auto; margin-right: auto;" >
+
+In a way the Newton polygon refines the notion of degree of a polynomial, by keeping track of the extremal exponents appearing in the polynomial. For example, for univariate polynomials the Newton polytope is simply a segment from the lowest exponent to the highest exponent.
+
+When we multiply two polynomials, the resulting degree corresponds to the sum of the original degrees. In the case of the Newton polytopes we need to define a special sum that given two polytopes spits another polytope. **Given two polytopes $$P$$ and $$Q$$ we call their *Minkowski sum* $$P + Q$$ the set of all the points which can be expressed as the sum of a point in $$P$$ with a point in $$Q$$**, i.e.
+
+$$ P + Q :=  \left\{ p + q \; | \; p \in P, q \in Q \right\}. $$
+
+One can intuitively think of the Minkowski sum of $$P$$ and $$Q$$ as the region swept out by moving $$Q$$ along $$P$$ (or the other way around), as in the following picture.
+
+<img src="\assets\img\2022-05-16-TropicalML\minkowski_sum.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
+
+It is easy to see that this definition works well with Newton polytopes of product of polynomials. When we expand a product of two polynomials we compute - leaving for a second the coefficients aside - all the possible sums of one exponent of the first polynomial plus one exponent of the second. In other words, given two polynomials $$f$$ and $$g$$, **the Newton polygon of the product $$f \odot g$$ is the Minkowski sum of the Netwon polytopes of $$f$$ and $$g$$**, which is 
+
+$$
+\text{Newt}(fg) = \text{Newt}(f) + \text{Newt}(g).
+$$
+
+We can now give a better explanation to the example above where a polynomial had multiple factorizations. If we take each of the Netwon polytopes of each factor and we calculate their Minkowski sum, and we do this for both factorizations, we obtain the same Minkowski sum in two different ways.
+
+<img src="\assets\img\2022-05-16-TropicalML\double_minkowski.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
+
+
