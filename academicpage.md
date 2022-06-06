@@ -6,7 +6,7 @@ permalink: /academicpage/
 
 # I left academia
 
-In early 2019 I left academia and I started working as a software developer in the Stockholm area, where I'm happily based. I'm still very happy to talk about math, if you need to contact me you can use [LinkedIn](https://www.linkedin.com/in/gabriele-balletti/) or my personal mail `[name].[surname]@gmail.com` (be careful to spell them correctly, most people don't).
+In early 2019 I left academia and I started working as a software developer in the Stockholm area, where I'm happily based. I'm still very happy to talk about math, if you need to contact me you can use [LinkedIn](https://www.linkedin.com/in/gabriele-balletti/) or my personal mail `gabriele.balletti at gmail dot com`.
 
 
 # Publications

@@ -18,12 +18,12 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Gabriele Balletti's notes
-#author: Gabriele Balletti
+title: my messy notes
+author: Gabriele Balletti
 description: >- # this means to ignore newlines until "baseurl:"
-  A place where I pretend to discuss math and computer science, but I'm actually just trying to understand stuff.
+  A place where I dump my messy notes.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://gabrieleballetti.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
 linkedin_username:  gabriele-balletti
 github_username:  gabrieleballetti
@@ -38,8 +38,8 @@ plugins:
   - jekyll-paginate
 
 header_pages:
-  - about.md
   - academicpage.md
+  - about.md
 
 paginate: 1 
 paginate_path: "/page:num/"

@@ -69,7 +69,7 @@ And here is the algebraic tropical *quadric* (curve of degree two) it defines. I
 
 <img src="\assets\img\2022-05-16-TropicalML\tropical_curve.svg"  style="width:60%; display: block; margin-left: auto; margin-right: auto;" >
 
-As we increase the degree of the polynomials, curves get more complex. Here is what a degree fifteen tropical curve with random integer coefficients looks like (I made a [neat script](https://github.com/gabrieleballetti/tropical-curve-plotter) to plot such curves).
+As we increase the degree of the polynomials, curves get more complex. Here is what a degree fifteen tropical curve with random integer coefficients looks like.
 
 <img src="\assets\img\2022-05-16-TropicalML\tropical_curve_random.svg"  style="width:60%; display: block; margin-left: auto; margin-right: auto;" >
 
@@ -151,5 +151,11 @@ Passing to the tropical hypersurface, **this geometric construction defines a be
 
 Note that this visualization is partially misleading. Does not make too much sense to draw the curve and the subdivision in the same picture, as they live in different mathematical spaces. Although the subdivision retains some information about the coefficients, it also loses some. This means that we cannot deduce the exact position of the vertices of the curve simply looking at the subdivision. What we can say is how the curve will looks like *combinatorially*, which is which vertices are connected with which edges, which edges define which regions, and so forth.
 
-Something else we might notice is that there are two kind of linear regions in the complement of a tropical hypersurface: bounded and unbounded. The subdivision helps us to understand which ones are bounded and which ones are unbounded simply by looking at their corresponding vertices. In particular bounded regions correspond to vertices in the interior of the Newton polytope, while unbounded regions correspond to vertices on the boundary of the Newton polytope.
+Something else we might notice is that there are two kind of linear regions in the complement of a tropical hypersurface: bounded and unbounded. The subdivision helps us to understand which ones are bounded and which ones are unbounded simply by looking at their corresponding vertices. In particular **bounded linear regions correspond to vertices in the interior of the Newton polytope, while unbounded regions correspond to vertices on the boundary of the Newton polytope**. In the following example one can verify that there are six linear regions enclosed by the curve on the left and six interior vertices in the subdivision of its Newton polytope.
+
+<img src="\assets\img\2022-05-16-TropicalML\duality2.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
+
+>Most of the tropical curves have been plotted with a [Python script](https://github.com/gabrieleballetti/tropical-curve-plotter) I have recently put together. Source code for the other images is available [here](https://github.com/gabrieleballetti/unsolicited-tikz-pics/tree/main/mathplotlib/machinelearning_tropical).
+
+> Part two will come soon.
 
