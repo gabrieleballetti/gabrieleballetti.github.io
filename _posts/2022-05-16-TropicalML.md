@@ -138,3 +138,18 @@ $$
 then the polytope $$P_f$$ and the induced subdivision on $$\text{Newt}(P)$$ are depicted below.
 
 <img src="\assets\img\2022-05-16-TropicalML\subdivision.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
+
+How is this subdivision related to the tropical hypersurface? Recall that a tropical polynomial defines a function which at each point selects the maximum of a set of affine linear maps evaluated at that point, for example the map defined by $$1 \odot x^5 \oplus 4 \odot x^2 y^3$$ selects the max between $$1 + 5x$$ and $$4 + 2x + 3y$$ at each point $$(x, y)$$. Well, each point of $$P_f$$ corresponds to a monomial of $$f$$, and each monomial of $$f$$ corresponds to an affine linear map. Moreover upper hull only selects the points/monomials/maps which play a role in the polynomial function, meaning that if a point is below the upper hull, then the corresponding affine linear map will never achieve the maximum (and so could be discarded). Moreover, faces of the subdivision correspond to affine linear maps attaining maxima for some common values.
+
+Passing to the tropical hypersurface, **this geometric construction defines a beautiful duality between the subdivision and the hypersurface, which allows us to completely deduce the combinatorial structure of the hypersurface from the subdivision of its Newton polytope** (and the other way around). To each vertex of the subdivision correspond to a linear region, and each face of the subdivision correspond to a face of the hypersurface. Visualizing this in dimension two makes the duality much more evident:
+
+ - each **polygon** of the subdivision corresponds to a **vertex** of the curve,
+ - each **edge** of the subdivision corresponds to (and is perpendicular to) to an **edge** of the curve,
+ - each **vertex** of the subdivision corresponds to a **linear region** in the complement of the curve.
+
+<img src="\assets\img\2022-05-16-TropicalML\duality.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
+
+Note that this visualization is partially misleading. Does not make too much sense to draw the curve and the subdivision in the same picture, as they live in different mathematical spaces. Although the subdivision retains some information about the coefficients, it also loses some. This means that we cannot deduce the exact position of the vertices of the curve simply looking at the subdivision. What we can say is how the curve will looks like *combinatorially*, which is which vertices are connected with which edges, which edges define which regions, and so forth.
+
+Something else we might notice is that there are two kind of linear regions in the complement of a tropical hypersurface: bounded and unbounded. The subdivision helps us to understand which ones are bounded and which ones are unbounded simply by looking at their corresponding vertices. In particular bounded regions correspond to vertices in the interior of the Newton polytope, while unbounded regions correspond to vertices on the boundary of the Newton polytope.
+
