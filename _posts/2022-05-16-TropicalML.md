@@ -7,7 +7,7 @@ title:  "Piecewise linear activations: Machine Learning meets Tropical Geometry 
 
 > What tropical surfaces look like (a tropical quartic surface, from [this paper](https://arxiv.org/abs/1806.02236) )
 
-Activation functions decide what is to be fired to the following neuron in a neural network depending on the input signal received. Since they generally are the only nonlinear component in a model architecture, they are what truly allows networks to learn complex patterns, as without them network would only approximate linear functions (and most of their structure would be redundant). Although traditionally the sigmoid was the most common choice for an activation function, in modern neural network the default recommendation is to use the *Rectified Linear Unit* (ReLU) defined as $$x \mapsto \max(0,x)$$, or a more general *Leaky ReLU* $$x \mapsto \max(ax,x)$$, or even more general a *Maxout unit*. All these activation functions are *piecewise linear*, meaning that their graphs are composed of straight-line segments.
+Activation functions decide what is to be fired to the following neuron in a neural network depending on the input signal received. Since they generally are the only nonlinear component in a model architecture, they are what truly allows networks to learn complex patterns, as without them network would only approximate linear functions (and most of their structure would be redundant). Although traditionally the sigmoid was the most common choice for an activation function, in modern neural network the default recommendation is to use the *Rectified Linear Unit* (ReLU) defined as $$x \mapsto \max(0,x)$$, or a more general *Leaky ReLU* $$x \mapsto \max(ax,x)$$, or a even more general *Maxout unit*. All these activation functions are *piecewise linear*, meaning that their graphs are composed of straight-line segments.
 
 <img src="\assets\img\2022-05-16-TropicalML\activation_functions.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
 
@@ -125,8 +125,8 @@ Newton polytopes have much deeper connections with tropical polynomials than wha
 
 Let $$f(x_1, \ldots, x_n)$$ be a polynomial in $$n$$ variables, we build the subdivision of its Newton polytope $$\text{Newt}(P)$$ in three steps.
 
-1. Build the polytope $$P_f$$ as the convex hull of all the points $$(a_1, \ldots, a_n, c) \in \mathbb{R}^{n+1}$$ such that the monomial $$x_1^{a_1} \cdots x_n^{a_n}$$ appears in the expansion of $$f(x_1, \ldots , x_n)$$ with $$c$$ as a coefficient. From $$P_f$$ is an extended version of the Newton polytope $$\text{Newt}(P)$$, carrying extra information about the coefficients.
-2. Isolate the *upper hull* of $$P_f$$, i.e. the set of its $$n$$-dimensional faces whose outer normals have positive last coordinate. This can be though as the part of the surface of $$P_f$$ which can be seen *from above*.
+1. Build the *lifted Newton polytope* $$P_f$$ as the convex hull of all the points $$(a_1, \ldots, a_n, c) \in \mathbb{R}^{n+1}$$ such that the monomial $$x_1^{a_1} \cdots x_n^{a_n}$$ appears in the expansion of $$f(x_1, \ldots , x_n)$$ with $$c$$ as a coefficient. From $$P_f$$ is an extended version of the Newton polytope $$\text{Newt}(P)$$, carrying extra information about the coefficients.
+2. Isolate the *upper hull* of $$P_f$$, i.e. the set of its $$n$$-dimensional faces whose outer normals have positive last coordinate. This can be though as the part of the surface of the lifted Newton polytope which can be seen *from above*.
 3. Project down the upper hull by dropping the last coordinate, inducing a subdivision of $$\text{Newt}(P)$$.
 
 As an example, consider the polynomial 
@@ -135,7 +135,7 @@ $$
 f(x,y) = 0 \oplus 1 \odot x \oplus 1 \odot y \oplus 0 \odot x^2 \oplus 1 \odot xy \oplus 0 \odot y^2,
 $$
 
-then the polytope $$P_f$$ and the induced subdivision on $$\text{Newt}(P)$$ are depicted below.
+then the lifted Newton polytope $$P_f$$ and the induced subdivision on $$\text{Newt}(P)$$ are depicted below.
 
 <img src="\assets\img\2022-05-16-TropicalML\subdivision.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
 
