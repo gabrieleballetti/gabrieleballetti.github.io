@@ -18,8 +18,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: my messy notes
-author: Gabriele Balletti
+title: Gabriele Balletti
+#author: Gabriele Balletti
 description: >- # this means to ignore newlines until "baseurl:"
   A place where I dump my messy notes.
 baseurl: "" # the subpath of your site, e.g. /blog
