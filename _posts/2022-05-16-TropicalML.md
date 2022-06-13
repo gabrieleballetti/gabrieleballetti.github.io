@@ -13,18 +13,18 @@ Activation functions decide what is to be fired to the following neuron in a neu
 
 Using a piecewise linear activation function makes the network a piecewise linear function, i.e. the input space gets partitioned in polyhedral regions, and in each region the network behaves linearly. 
 
-Studying such linear regions is an important step in the understanding of deep neural networks: since their goal is to be good approximators, their number of linear regions is a good measure of their *expressiveness*. In recent years a lot of progress to find lower and upper bounds for this quantities has been made, with the best bounds - I could find - from [this paper by Montúfar et al.](https://arxiv.org/abs/2104.08135)). Note that the number of regions is massive: lower bounds tells us that there are at least $$10^{80}$$ even for small architectures. If you compare this number with the general number of training samples ($$\leq 10^6$$), it is clear that **basically none of the linear regions contains training data**!
+Studying such linear regions is an important step in the understanding of deep neural networks: since their goal is to be good approximators, their number of linear regions is a good measure of their *expressiveness*. In recent years a lot of progress to find lower and upper bounds for this quantities has been made, with the best bounds I could find being in [this paper by Montúfar et al.](https://arxiv.org/abs/2104.08135)). Note that the number of regions is massive: lower bounds tells us that there are at least $$10^{80}$$ even for small architectures. If you compare this number with the general number of training samples ($$\leq 10^6$$), it is clear that **basically none of the linear regions contains training data**!
 
 > This raises the question of how representative the number of linear regions is for network performance and how information extracted from training samples passes on to the many linear regions free of data for successful generalization to test data (from [Trimmel et al.](https://openreview.net/forum?id=IqtonxWI0V3)).
 
-An important tool for this kind of investigations has been *tropical geometry*: it turns out that **ReLU/Maxout neural network functions are the same as tropical rational maps**. 
+An important tool for this kind of investigations has been *tropical geometry*: it turns out that **ReLU/Maxout neural network functions are tropical rational maps**. Now, this statement sounds better then it actually is, as the set of all tropical rational maps (if we allow real-valued exponents) is the same as the set of all piecewise linear maps. On the other hand Tropical Geometry is a handy tool to study geometric properties of these networks.
 
-I am going to present this connection in a series of blog posts. In this first one I focus on the math part, introducing the main ideas behind tropical geometry.
+I am going to present this connection in a series of blog posts. In this first one I focus on the math part, introducing the main ideas behind Tropical Geometry.
 
-## A gentle introduction to Tropical Geometry
+## An (illustrated) introduction to Tropical Geometry
 Tropical Geometry is a relatively recent field of study in mathematics - laying somewhere between algebraic geometry and combinatorics - where the traditional study of algebraic varieties is substituted by the study of some polyhedral objects, defined by interpreting the polynomials over the *tropical semiring*. The best reference for tropical geometry is the book *Introduction to Tropical Geometry* by Diane Maclagan and Bernd Sturmfels. In it you will find the slogan "a tropical variety is a *combinatorial shadow* of the original variety", which is now is repeated as a mantra in paper and conferences (1870 results on Google for ["combinatorial shadow of"](https://www.google.com/search?q=%22combinatorial+shadow+of%22), probably all from this context). Remember to use it if you write a paper on this subject.
 
-Another curiosity is the origin of the term *tropical* in Tropical Geometry, from the aforementioned book:
+Another curiosity is the origin of the term *tropical* in Tropical Geometry. From the aforementioned book:
 
 > The adjective “tropical” was coined by French mathematicians, notably Jean-Eric Pin, to honor their Brazilian colleague Imre Simon, who pioneered the use of min-plus algebra in optimization theory. There is no deeper meaning in the adjective “tropical”. It simply stands for the French view of Brazil. 
 
