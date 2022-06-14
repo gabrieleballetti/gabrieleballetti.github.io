@@ -17,7 +17,7 @@ Studying such linear regions is an important step in the understanding of deep n
 
 > This raises the question of how representative the number of linear regions is for network performance and how information extracted from training samples passes on to the many linear regions free of data for successful generalization to test data (from [Trimmel et al.](https://openreview.net/forum?id=IqtonxWI0V3)).
 
-An important tool for this kind of investigations has been *tropical geometry*: it turns out that **ReLU/Maxout neural network functions are tropical rational maps**. Now, this statement sounds better then it actually is, as the set of all tropical rational maps (if we allow real-valued exponents) is the same as the set of all piecewise linear maps. On the other hand Tropical Geometry is a handy tool to study geometric properties of these networks.
+An important tool for this kind of investigations has been *tropical geometry*: it turns out that **ReLU/Maxout neural network functions are tropical rational maps**. Now, this statement sounds deeper then it actually is, as the set of all tropical rational maps (if we allow real-valued exponents) is the same as the set of all piecewise linear maps. On the other hand Tropical Geometry is an extremely useful tool to study geometric properties of these networks.
 
 I am going to present this connection in a series of blog posts. In this first one I focus on the math part, introducing the main ideas behind Tropical Geometry.
 
