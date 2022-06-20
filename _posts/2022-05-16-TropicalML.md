@@ -17,7 +17,7 @@ Studying such linear regions is an important step in the understanding of deep n
 
 > This raises the question of how representative the number of linear regions is for network performance and how information extracted from training samples passes on to the many linear regions free of data for successful generalization to test data (from [Trimmel et al.](https://openreview.net/forum?id=IqtonxWI0V3)).
 
-An important tool for this kind of investigations has been *tropical geometry*: it turns out that **ReLU/Maxout neural network functions are tropical rational maps**. Now, this statement sounds deeper then it actually is, as the set of all tropical rational maps (if we allow real-valued exponents) is the same as the set of all piecewise linear maps. On the other hand Tropical Geometry is an extremely useful tool to study geometric properties of these networks.
+An important tool for this kind of investigations has been *Tropical Geometry*: it turns out that **ReLU/Maxout neural network functions are tropical rational maps**. Now, once one familiarizes both with the structure of these networks and the theory of Tropical Geometry, it turns out that this result is actually quite obvious. The key of this connection is instead that tools which are used to deal with tropical varieties can now be used to investigate the structure of neural networks, and observe how training affects them.
 
 I am going to present this connection in a series of blog posts. In this first one I focus on the math part, introducing the main ideas behind Tropical Geometry.
 
@@ -41,7 +41,9 @@ The extra element $$-\infty$$ has been added to ensure that $$\mathbb{T}$$ has a
 
 If interpreted as functions over the tropical semiring, polynomials are piecewise linear functions, where the "pieces" - or *linear regions* - are polyhedral. Consider the univariate tropical polynomial
 
-$$p(x) = x^2 \oplus 2 \odot x \oplus 1 = \max \{ 2x, x + 2, 1 \}$$,
+$$
+p(x) = x^2 \oplus 2 \odot x \oplus 1 = \max \{ 2x, x + 2, 1 \},
+$$
 
 in this case the linear regions are the intervals $$(-\infty,-1], [-1,2], [2,+\infty)$$. Here the values $$-1$$ and $$2$$ play a special role, as each of them belongs to two intervals. Moreover, they appear explicitly if we rewrite $$p$$ as $$(x \oplus -1) \odot (x \oplus 2)$$. It makes then sense to call them *tropical roots* of $$p$$, in analogy with what happens in the traditional settings.
 

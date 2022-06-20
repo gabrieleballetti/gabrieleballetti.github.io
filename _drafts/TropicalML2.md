@@ -25,13 +25,13 @@ $$
 \Phi (\mathbf{x}) = \max \{ 0, A^{(1)} \max \{ 0, A^{(0)} \mathbf{x} + \mathbf{b}^{(0)} \} + \mathbf{b}^{(1)} \}.
 $$
 
-Before we could interpret this map as a tropical polynomial (after all it is just a composition of the max operator and affine linear forms), we should be careful about the following subtlety. We want to be able to expand products such as 
+Before we could interpret this map tropically, we need to remark that **we allow real numbers as (tropical) exponents**. Since polynomials are traditionally studied with nonnegative integers appearing as exponents, Tropical Geometry is also generally introduced with nonnegative integers as exponents. On the other hand, tropical maps, their tropical varieties and Newton polytopes and all the results about them we discussed in the previous post still make sense, and all their properties still hold, when using real numbers as exponents. This is due to the ``linearity'' of Tropical Geometry. While in the classical setting it might not be clear what $$(-1)^\pi$$ means, if interpreted tropically that expressions just means
 
 $$
-A \max \{ 0,\mathbf{x} \} = \max \{ 0, A \mathbf{x} \},
+(-1)^{\odot \pi} = \pi \cdot (-1) = -\pi.
 $$
 
-but this is true only if the all the entries of $$A$$ are non-negative, which is clearly not the case. We get around this by decomposing $$A$$ into the difference of two nonnegative valued matrices
+In order to simplify the expression above, we need to be careful that $$a \cdot \max\{ x_0, x_1 \}$$ is not just $$\max\{ ax_0, ax_1 \}$$, unless $$a \geq 0$$. We get around this by splitting the weights in positive and negative. In compact notation, we decompose a weight matrix $$A$$ into the difference of two nonnegative valued matrices
 
 $$
 A = A_+ - A_-
@@ -43,26 +43,15 @@ $$
 A \max \{ 0,\mathbf{x} \} = \max \{ A_- \mathbf{x}, A_+ \mathbf{x} \} - A_-\mathbf{x}.
 $$
 
-We can now use this to simplify the map defined by the tiny neural network above, which now (if I did the math right, which rarely happens) can be expressed as 
+We can simplify the map defined by the tiny neural network above, which now (if I did the math right) should look like
 
 $$
 \Phi (\mathbf{x}) = \max \{ A^{(1)}_- \mathbf{y} - \mathbf{b}^{(1)}, A^{(1)}_- \mathbf{y}, A^{(1)}_+ \mathbf{y} \} - A^{(1)}_- \mathbf{y} +  \mathbf{b}^{(1)}, \quad \text{ where } \mathbf{y} = A^{(0)} \mathbf{x} + \mathbf{b}^{(0)}.
 $$
 
-What is important here is that we have expressed the map defined by the neural network as the difference of maps which are now tropical maps:
+Without explicitly expressing $$\Phi$$ in terms of $$x_0$$ and $$x_1$$, we can note that the first half is a maximum among affine linear forms, to which another affine linear form is subtracted. Now this can be interpreted tropically, as the first part is just a tropical sum of tropical polynomials, and hence a tropical polynomial, and the latter is just a tropical polynomial. If we introduce the symbol $$\oslash$$ to denote the inverse of the tropical multiplication (i.e. the classical subtraction) then **$$\Phi$$ is a tropical rational map**:
 
 $$
-\Phi (\mathbf{x}) =  F(\mathbf{x}) - G((\mathbf{x})).
+\Phi (\mathbf{x}) =  F(\mathbf{x}) \oslash G(\mathbf{x}).
 $$
 
-
-
-which tropically corresponds to the so called *Freshman's dream*, i.e. the equality
-
-$$
-(x_0 \oplus x_1)^a = x_0^a \oplus x_1^a.
-$$
-
-But this is based on the assumption that $$a$$ is a non-negative integer, while all the weights of the expression above are real numbers without any restriction. Luckily passing from non-negative integer to non-negative real numbers is not a big deal. Traditionally Tropical Geometry is studies as a parallel to classical algebraic geometry, which deals with polynomials. Since polynomials have nonnegative integers appearing as exponents, then tropical mathematics is usually done with nonnegative integers as exponents. On the other hand, tropical maps, their tropical varieties and Newton polytopes and all the results about them we discussed in the previous post still make sense by using real numbers as exponents. While in the classical setting it might not be clear what $$(-1)^\pi$$ means, if interpreted tropically that expressions just means $$\pi \cdot (-1)$$.
-
-This solve half of the problem, in the expression above we would like to expand $$A^{(1)} \max \{ 0, A^{(0)} \mathbf{x} + \mathbf{b}^{(0)} \} + \mathbf{b^{(1)}} $$
