@@ -37,6 +37,8 @@ The *tropical semiring* is defined as $$\mathbb{T} := (\mathbb{R} \cup \{ -\inft
 
 The extra element $$-\infty$$ has been added to ensure that $$\mathbb{T}$$ has an additive identity, i.e. $$x \oplus -\infty = x$$, while $$0$$ is the multiplicative identity. This definition ensures associativity, commutativity and distributivity, although the addition is not invertible, for example $$x \oplus 1 = 0$$ has no solutions. For this reason $$\mathbb{T}$$ is a semiring, not a ring. Note that $$\min$$ tends to be used more frequently instead of $$\max$$ by mathematicians, but since it is only a matter of conventions we are going to use the $$\max$$-convention, as it will adapt better to the machine learning context. In any case, the whole theory is equivalent regardless of this choice.
 
+Since we have a multiplication operation, it makes sense to talk about exponentiation, defining it as an iterated multiplications. Although we might use the notation $$x^{\odot 2}$$ to indicate $$x \odot x$$, we will often just write it $$x^2$$, especially if it is clear that we are on a tropical context.
+
 ### Roots of tropical polynomials
 
 If interpreted as functions over the tropical semiring, polynomials are piecewise linear functions, where the "pieces" - or *linear regions* - are polyhedral. Consider the univariate tropical polynomial
@@ -157,7 +159,9 @@ Something else we might notice is that there are two kind of linear regions in t
 
 <img src="\assets\img\2022-05-16-TropicalML\duality2.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
 
->Most of the tropical curves have been plotted with a [Python script](https://github.com/gabrieleballetti/tropical-curve-plotter) I have recently put together. Source code for the other images is available [here](https://github.com/gabrieleballetti/unsolicited-tikz-pics/tree/main/mathplotlib/machinelearning_tropical).
+>Most of the tropical curves have been plotted with a [Python script](https://github.com/gabrieleballetti/tropical-curve-plotter) I have recently put together.
+Source code for the other images:
+[matplotlib](https://github.com/gabrieleballetti/unsolicited-tikz-pics/tree/main/matplotlib/TropicalML1).
 
 > Part two will come soon.
 
