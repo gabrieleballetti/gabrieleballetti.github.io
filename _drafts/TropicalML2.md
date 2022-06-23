@@ -35,7 +35,9 @@ $$
 \Phi(x_0, x_1) =  (1 \odot x_0^2 \oplus x_1^3) \oslash x_1^3.
 $$
 
-This is of course a minimal example, but can be used as the base case for inductively showing that any ReLU MLP is a tropical rational map. Consider a larger MLP with $$L$$ layers with the last one consisting of only one output neuron.
+This is of course a minimal example, but can be used as the base case for inductively showing that any ReLU MLP is a tropical rational map. It is easy to see that the same argument holds for any number of input neurons.
+
+For the inductive step consider a larger ReLU MLP with $$L$$ layers with the last one consisting of only one output neuron.
 
 <img src="\assets\img\2022-06-20-TropicalML2\mlp.svg"  style="width:90%; display: block; margin-left: auto; margin-right: auto;" >
 
@@ -48,17 +50,19 @@ $$
 At this point we can again manipulate the expression using the property substracting all negative terms inside the max, and adding them outside.
 
 $$
-\small
-\Phi(\mathbf{x}) = \max \left\{\sum_{i | w_i < 0} w_i F_i(\mathbf{x}) + \sum_{i | w_i \geq 0}  w_i G_i(\mathbf{x}), \sum_{i | w_i \geq 0} w_i F_i(\mathbf{x}) + \sum_{i | w_i < 0}  w_i G_i(\mathbf{x}) + b \right\} - \sum_{i | w_i < 0} w_i F_i(\mathbf{x}) + \sum_{i | w_i \geq 0}  w_i G_i(\mathbf{x}).
+\scriptsize
+\Phi(\mathbf{x}) = \max \left\{\sum_{i | w_i < 0} (-w_i) F_i(\mathbf{x}) + \sum_{i | w_i \geq 0}  w_i G_i(\mathbf{x}), \sum_{i | w_i \geq 0} w_i F_i(\mathbf{x}) + \sum_{i | w_i < 0}  (-w_i) G_i(\mathbf{x}) + b \right\} - \left( \sum_{i | w_i < 0} (-w_i) F_i(\mathbf{x}) + \sum_{i | w_i \geq 0}  w_i G_i(\mathbf{x}) \right).
 $$
 
 This is a bit intimidating, but what matters is that it is a difference of two terms, and both these terms are sum, product and exponentiations of tropical polynomials and thus they are both tropical polynomials. This means that $$\Phi$$ is of the form
 
 $$
-\Phi(\mathbf{x}) = F(\mathbf{x}) - G(\mathbf{x})),
+\Phi(\mathbf{x}) = F(\mathbf{x}) \oslash G(\mathbf{x}),
 $$
 
-where $$F$$ and $$G$$ are tropical polynomials. **This proves that all MLPs defines tropical rational maps.** Note that the fact that we fixed the output layer to consist of only one neuron is not restrictive, as this argument can be applied individually on all output neurons. Moreover this proof can be readapted to other piecewise linear activations (leaky ReLU, Maxout), other architectures (such as CNNs), and are not invalidated by pooling operations, residual blocks, concatenations, skip connections and so forth. As long as the activations are piecewise linear and all the other operations are composition of affine linear transformations, then this kind of argument can be used.
+where $$F$$ and $$G$$ are tropical polynomials. **This proves that all MLPs are tropical rational maps.** Note that the fact that we fixed the output layer to consist of only one neuron is not restrictive, as this argument can be applied individually on all output neurons. Moreover this proof can be readapted to other piecewise linear activations (leaky ReLU, Maxout), other architectures (such as CNNs), and are not invalidated by pooling operations, residual blocks, concatenations, skip connections and so forth. As long as the activations are piecewise linear and all the other operations are composition of affine linear transformations, then this kind of argument can be used.
+
+In [this paper by Zhang et al.](https://arxiv.org/abs/1805.07091) there is a  formal proof of the statement above, and additionally they show that also the opposite statement is true, meaning that all tropical rational maps can be expressed as a ReLU neural network.
 
 ### An example, a tiny multilayer perceptron
 
