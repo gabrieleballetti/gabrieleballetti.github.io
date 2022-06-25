@@ -41,17 +41,17 @@ For the inductive step consider a larger ReLU MLP with $$L$$ layers with the las
 
 <img src="\assets\img\2022-06-20-TropicalML2\mlp.svg"  style="width:90%; display: block; margin-left: auto; margin-right: auto;" >
 
-Let $$w_i$$ and $$b$$ be the weights and the bias at the output neuron. By inductive hypothesis we assume that each of the neurons at the layer $$L - 1$$ is given by a tropical rational function $$F_i(\mathbf{x}) \oslash G_i(\mathbf{x})$$. Then, the network defines the map
+Let $$w_i$$ and $$b$$ be the weights and the bias at the output neuron. By inductive hypothesis we assume that each of the neurons at the layer $$L - 1$$ is given by a tropical rational function $$F^{(L-1)}_i(\mathbf{x}) \oslash G^{(L-1)}_i(\mathbf{x})$$. Then, the network defines the map
 
 $$
-\Phi(\mathbf{x}) = \max \left\{0, \sum_{i} w_i (F_i(\mathbf{x}) - G_i(\mathbf{x})) + b \right\}
+\Phi(\mathbf{x}) = \max \left\{0, \sum_{i} w_i (F^{(L-1)}_i(\mathbf{x}) - G^{(L-1)}_i(\mathbf{x})) + b \right\}.
 $$
 
 At this point we can again manipulate the expression using the property substracting all negative terms inside the max, and adding them outside.
 
 $$
 \scriptsize
-\Phi(\mathbf{x}) = \max \left\{\sum_{i | w_i < 0} (-w_i) F_i(\mathbf{x}) + \sum_{i | w_i \geq 0}  w_i G_i(\mathbf{x}), \sum_{i | w_i \geq 0} w_i F_i(\mathbf{x}) + \sum_{i | w_i < 0}  (-w_i) G_i(\mathbf{x}) + b \right\} - \left( \sum_{i | w_i < 0} (-w_i) F_i(\mathbf{x}) + \sum_{i | w_i \geq 0}  w_i G_i(\mathbf{x}) \right).
+\Phi(\mathbf{x}) = \max \left\{\sum_{i | w_i < 0} (-w_i) F^{(L-1)}_i(\mathbf{x}) + \sum_{i | w_i > 0}  w_i G^{(L-1)}_i(\mathbf{x}), \sum_{i | w_i > 0} w_i F^{(L-1)}_i(\mathbf{x}) + \sum_{i | w_i < 0}  (-w_i) G^{(L-1)}_i(\mathbf{x}) + b \right\} - \left( \sum_{i | w_i < 0} (-w_i) F^{(L-1)}_i(\mathbf{x}) + \sum_{i | w_i > 0}  w_i G^{(L-1)}_i(\mathbf{x}) \right).
 $$
 
 This is a bit intimidating, but what matters is that it is a difference of two terms, and both these terms are sum, product and exponentiations of tropical polynomials and thus they are both tropical polynomials. This means that $$\Phi$$ is of the form
@@ -62,7 +62,37 @@ $$
 
 where $$F$$ and $$G$$ are tropical polynomials. **This proves that all MLPs are tropical rational maps.** Note that the fact that we fixed the output layer to consist of only one neuron is not restrictive, as this argument can be applied individually on all output neurons. Moreover this proof can be readapted to other piecewise linear activations (leaky ReLU, Maxout), other architectures (such as CNNs), and are not invalidated by pooling operations, residual blocks, concatenations, skip connections and so forth. As long as the activations are piecewise linear and all the other operations are composition of affine linear transformations, then this kind of argument can be used.
 
-In [this paper by Zhang et al.](https://arxiv.org/abs/1805.07091) there is a  formal proof of the statement above, and additionally they show that also the opposite statement is true, meaning that all tropical rational maps can be expressed as a ReLU neural network.
+In [this paper by Zhang et al.](https://arxiv.org/abs/1805.07091) there is a proof of the statement above, and additionally they show that also the opposite statement is true, meaning that all tropical rational maps can be expressed as a ReLU neural network.
+
+### Newton polytopes of ReLU networks
+
+Once established that ReLU networks can be expressed as tropical rational maps, then we know that the decision boundaries of the network can be written as the union between the tropical variety of $$F$$ and the tropical variety of $$G$$. As discussed in the previous part, tropical varieties are dual objects to the Newton polytopes of their defining polynomials, so we can now shift our attention to Newton polytopes, and find out what $$\text{Newt}(F)$$ and $$\text{Newt}(G)$$ are. 
+
+For the same network $$\Phi$$ as above ($$L$$ layers, the last of which is a single output neuron), we can deduce the Newton polytopes of $$F$$ and $$G$$ from those of the polynomials given from each of the neurons at the layer $$L - 1$$, which are $$\text{Newt}(F^{(L-1)}_i)$$ and $$\text{Newt}(G^{(L-1)}_i)$$, with $$i$$ indicating the $$i$$-th neuron on that layer. We do that using the explicit expression of $$\Phi(\mathbf{x})$$ we have previously found, obtaining:
+
+$$\displaystyle{\text{Newt}(G) = \sum_{i | w_i < 0} (-w_i) \text{Newt}(F^{(L-1)}_i) + \sum_{i | w_i > 0}  w_i \text{Newt}(G^{(L-1)}_i)}
+$$
+$$\displaystyle{\text{Newt}(F) = \text{conv} \{ \text{Newt}(G) \cup \sum_{i | w_i > 0} w_i \text{Newt}(F^{(L-1)}_i) + \sum_{i | w_i < 0} (-w_i) \text{Newt}(G^{(L-1)}_i)} \cup \mathbf{0} \}.$$
+
+Note that the sums above are Minkowski sum, in other words, the Newton polytope of $$G$$ is just a weighted Minkowski sum of the Newton polytopes $$\text{Newt}(F^{(L-1)}_i)$$ and $$\text{Newt}(G^{(L-1)}_i)$$,
+while the Newton polytope of $$F$$ is the union of two such weighted Minkowski sums (and the origin). 
+
+Note that - for all $$i$$ - $$\text{Newt}(F^{(1)}_i)$$ is a segment, while $$\text{Newt}(G^{(1)}_i)$$ is just a point (see the two layers network above as an example). At the next layer $$\text{Newt}(G^{(2)}_i)$$ is a segment, while $$F$$ starts to get more complex, being the convex hull of the union of two edges, plus the origin.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### An example, a tiny multilayer perceptron
 
