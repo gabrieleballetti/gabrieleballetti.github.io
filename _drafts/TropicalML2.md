@@ -77,22 +77,23 @@ $$\displaystyle{\text{Newt}(F) = \text{conv} \{ \text{Newt}(G) \cup \sum_{i | w_
 Note that the sums above are Minkowski sum, in other words, the Newton polytope of $$G$$ is just a weighted Minkowski sum of the Newton polytopes $$\text{Newt}(F^{(L-1)}_i)$$ and $$\text{Newt}(G^{(L-1)}_i)$$,
 while the Newton polytope of $$F$$ is the union of two such weighted Minkowski sums (and the origin). 
 
-Note that - for all $$i$$ - $$\text{Newt}(F^{(1)}_i)$$ is a segment, while $$\text{Newt}(G^{(1)}_i)$$ is just a point (see the two layers network above as an example). At the next layer $$\text{Newt}(G^{(2)}_i)$$ is a segment, while $$F$$ starts to get more complex, being the convex hull of the union of two edges, plus the origin.
+Note that - for all $$i$$ - $$\text{Newt}(F^{(1)}_i)$$ is a segment, while $$\text{Newt}(G^{(1)}_i)$$ is just a point (see the two layers network above as an example). At the next layer $$\text{Newt}(G^{(2)}_i)$$ is a *zonotope* (a Minkowski sum of edges), while $$\text{Newt}(F^{(2)}_i)$$ gets more complex, being the convex hull of the union of two zonotopes, plus the origin. At this point what is left is to count the *upper vertices* (the vertices of the upper hull) of these Minkowski sums, this will give us the number of linear regions we are looking for.
 
+In [this paper by Montúfar et al.](https://arxiv.org/abs/2104.08135) the authors readapt a result by Weibel to count upper faces of Minkowski sums in terms of the number of upper faces of the Minkowski summands (Theorem 4.10). In the case of upper vertices for a Minkowski sum $$P = P_1 + \cdots + P_m$$ in $$\mathbb{R}^{n+1}$$, they obtain that they are at most
 
+$$
+\sum_{j = 0}^n(-1)^{n-j} { m - i - j \choose n-j} \sum_{S \in {[m] \choose j}} \prod_{i \in S} f_0(P_i)
+$$
 
+where $$f_0(P_i)$$ denotes the number of vertices of $$P_i$$. From this bound one can deduce that the maximum number of linear region of a shallow network with $$n$$ inputs and a single layer of ReLU units is
 
+$$
+\sum_{j = 0}^n {m \choose j},
+$$
 
+and that this bound is sharp (Theorem 3.6). Note that in the paper this is done in the more general settings of maxout units.
 
-
-
-
-
-
-
-
-
-
+Iteratively applying this result to our deep networks setting - a network $$\Phi$$ ReLU activations, $$L$$ layers with $$n_1, \ldots, n_L$$ neurons - one can obtain the following asymptotic (and tight) bounds: the number of linear regions of $$\Phi$$ is (asymptotically) at least $$2^{L n_0}\prod_{l=1}^L n_l^{n_0}$$ and at most $$2^{2 L n_0} \prod_{l=1}^L n_l^{n_0}$$. This means **that the number of linear regions grows exponentially both with the network depth and the layers width**.
 
 ### An example, a tiny multilayer perceptron
 
