@@ -93,7 +93,7 @@ $$
 
 and that this bound is sharp (Theorem 3.6). Note that in the paper this is done in the more general settings of maxout units.
 
-Iteratively applying this result to our deep networks setting - a network $$\Phi$$ ReLU activations, $$L$$ layers with $$n_1, \ldots, n_L$$ neurons - one can obtain the following asymptotic (and tight) bounds: the number of linear regions of $$\Phi$$ is (asymptotically) at least $$2^{L n_0}\prod_{l=1}^L n_l^{n_0}$$ and at most $$2^{2 L n_0} \prod_{l=1}^L n_l^{n_0}$$. This means **that the number of linear regions grows exponentially both with the network depth and the layers width**.
+Iteratively applying this result to our deep networks setting - a network $$\Phi$$ ReLU activations, $$L$$ layers with $$n_1, \ldots, n_L$$ neurons - one can obtain the following asymptotic (and tight) bounds: the number of linear regions of $$\Phi$$ is (asymptotically) at least $$2^{L n_0}\prod_{l=1}^L n_l^{n_0}$$ and at most $$2^{2 L n_0} \prod_{l=1}^L n_l^{n_0}$$. This means that the number of linear regions grows exponentially both with the network depth and the layers width.
 
 ### An example, a tiny multilayer perceptron
 
