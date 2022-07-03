@@ -137,8 +137,8 @@ $$
 \Phi(x_0, x_1) = \max \left\{4x_0 + 3 x_1, x_1 - 4, 6x_0 + 2x_1 -3 \right\} - \max \left\{4x_0 + 3 x_1, x_1 - 4 \right\},
 $$
 
-which tropically can be written as
+which tropically can be written as the quotient
 
 $$
-\Phi(x_0, x_1) = \left( x_0^4 x_1^3 \oplus (-4) \otimes x_1  \oplus (-3) \otimes x_0^6 x_1^2 \right \oslash \left( x_0^4 x_1^3 \oplus (-4) \otimes x_1  \right).
+\Phi(x_0, x_1) = \left( x_0^4 x_1^3 \oplus (-4) \odot x_1  \oplus (-3) \odot x_0^6 x_1^2 \right) \oslash \left( x_0^4 x_1^3 \oplus (-4) \odot x_1  \right).
 $$
