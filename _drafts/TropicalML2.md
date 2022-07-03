@@ -95,14 +95,50 @@ and that this bound is sharp (Theorem 3.6). Note that in the paper this is done 
 
 Iteratively applying this result to our deep networks setting - a network $$\Phi$$ ReLU activations, $$L$$ layers with $$n_1, \ldots, n_L$$ neurons - one can obtain the following asymptotic (and tight) bounds: the number of linear regions of $$\Phi$$ is (asymptotically) at least $$2^{L n_0}\prod_{l=1}^L n_l^{n_0}$$ and at most $$2^{2 L n_0} \prod_{l=1}^L n_l^{n_0}$$. This means that the number of linear regions grows exponentially both with the network depth and the layers width.
 
-### An example, a tiny multilayer perceptron
+### An example, a tiny ReLU MLP
 
-Let's be a bit more explicit with another small network. Consider a MLP with two input neurons, a hidden layer with three neurons and a single output neuron, with some activation function $$\phi$$ at each non-input neuron.
+As an example, consider a MLP with two input neurons, a hidden layer with three neurons and a single output neuron, with ReLU activations at each non-input neuron.
 
 <img src="\assets\img\2022-06-20-TropicalML2\tiny_mlp.svg"  style="width:50%; display: block; margin-left: auto; margin-right: auto;" >
 
-Then this model defines a map $$\Phi$$ mapping the input $$\mathbf{x} = (x_0, x_1)$$ as
+Then this network defines a map $$\Phi$$ mapping the input $$(x_0, x_1)$$ as
 
 $$
-\Phi (\mathbf{x}) = \phi(A^{(1)} \phi(A^{(0)} \mathbf{x} + \mathbf{b}^{(0)}) + \mathbf{b}^{(1)}),
+\Phi(x_0, x_1) = \max \left\{0,  \sum_{i = 0}^2  w^{(2)}_i \max \left\{0, w^{(1)}_{i,0} x_0 + w^{(1)}_{i,1} x_1 + b^{(1)}_i \right\} + b^{(2)}\right\}.
+$$
+
+for some weights and biases. We now fix some values for them:
+
+$$
+\mathbf{w}^{(1)} = 
+\begin{pmatrix}
+1 & 3\\
+-2 & -1\\
+2 & -1\\
+\end{pmatrix}, \quad
+\mathbf{b}^{(1)} = 
+\begin{pmatrix}
+1\\
+-2\\
+-1\\
+\end{pmatrix}, \quad
+\mathbf{w}^{(2)} = 
+\begin{pmatrix}
+1\\
+-2\\
+1\\
+\end{pmatrix}, \quad
+b^{(2)}= 0.
+$$
+
+By applying the "weights-moving" procedure we described earlier we can find the following explicit expression for $$\Phi(x_0, x_1)$$:
+
+$$
+\Phi(x_0, x_1) = \max \left\{4x_0 + 3 x_1, x_1 - 4, 6x_0 + 2x_1 -3 \right\} - \max \left\{4x_0 + 3 x_1, x_1 - 4 \right\},
+$$
+
+which tropically can be written as
+
+$$
+\Phi(x_0, x_1) = x_0^4 x_1^3 \oplus (-4) \otimes x_1 (-3) \otimes x_0^6 x_1^2
 $$
