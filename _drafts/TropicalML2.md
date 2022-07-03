@@ -140,5 +140,5 @@ $$
 which tropically can be written as
 
 $$
-\Phi(x_0, x_1) = x_0^4 x_1^3 \oplus (-4) \otimes x_1 (-3) \otimes x_0^6 x_1^2
+\Phi(x_0, x_1) = \left( x_0^4 x_1^3 \oplus (-4) \otimes x_1  \oplus (-3) \otimes x_0^6 x_1^2 \right \oslash \left( x_0^4 x_1^3 \oplus (-4) \otimes x_1  \right).
 $$
