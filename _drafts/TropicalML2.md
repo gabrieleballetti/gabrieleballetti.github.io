@@ -85,9 +85,12 @@ Once established that ReLU networks can be expressed as tropical rational maps, 
 
 For the same network $$\Phi$$ as above ($$L$$ layers, the last of which is a single output neuron), we can deduce the Newton polytopes of $$F$$ and $$G$$ from those of the polynomials given from each of the neurons at the layer $$L - 1$$, which are $$\text{Newt}(F^{(L-1)}_i)$$ and $$\text{Newt}(G^{(L-1)}_i)$$, with $$i$$ indicating the $$i$$-th neuron on that layer. We do that using the explicit expression of $$\Phi(\mathbf{x})$$ we have previously found, obtaining:
 
-$$\displaystyle{\text{Newt}(G) = \sum_{i | w_i < 0} (-w_i) \text{Newt}(F^{(L-1)}_i) + \sum_{i | w_i > 0}  w_i \text{Newt}(G^{(L-1)}_i)}
 $$
-$$\displaystyle{\text{Newt}(F) = \text{conv} \{ \text{Newt}(G) \cup \sum_{i | w_i > 0} w_i \text{Newt}(F^{(L-1)}_i) + \sum_{i | w_i < 0} (-w_i) \text{Newt}(G^{(L-1)}_i)} \cup \mathbf{0} \}.$$
+\begin{align}
+&\displaystyle{\text{Newt}(G) = \sum_{i | w_i < 0} (-w_i) \text{Newt}(F^{(L-1)}_i) + \sum_{i | w_i > 0}  w_i \text{Newt}(G^{(L-1)}_i)}\\
+&\displaystyle{\text{Newt}(F) = \text{conv} \{ \text{Newt}(G) \cup \sum_{i | w_i > 0} w_i \text{Newt}(F^{(L-1)}_i) + \sum_{i | w_i < 0} (-w_i) \text{Newt}(G^{(L-1)}_i)} \cup \mathbf{0} \}.\\
+\end{align}
+$$
 
 Note that the sums above are Minkowski sum, in other words, the Newton polytope of $$G$$ is just a weighted Minkowski sum of the Newton polytopes $$\text{Newt}(F^{(L-1)}_i)$$ and $$\text{Newt}(G^{(L-1)}_i)$$,
 while the Newton polytope of $$F$$ is the union of two such weighted Minkowski sums (and the origin). 
@@ -155,29 +158,31 @@ $$
 By applying the "negative-weights-moving" procedure we described earlier we can find an explicit expression for $$\Phi(x_0, x_1)$$:
 
 $$
-\Phi(x_0, x_1) = F(x_0, x_1) \oslash G(x_0, x_1)
+\Phi(x_1, x_2) = F(x_1, x_2) \oslash G(x_1, x_2)
 $$
 
 with
 
 $$
 \begin{align}
-F(x_0, x_1) &= G(x_0, x_1) \oplus H(x_0, x_1),\\
-G(x_0, x_1) &= (x_2 \oplus x_1^4) \odot ((-2) \odot x_1^3 x_2^2 \oplus 0)^3 \odot x_1 \odot (x_2^3)^2,\\
-H(x_0, x_1) &= (1 \odot x_2 \oplus x_1) \odot ((-1) \odot x_1 \oplus x_2^3)^2 \odot (2 \odot x_1x_2^2 \oplus 0) \odot x_1^4.
+F(x_1, x_2) &= G(x_1, x_2) \oplus H(x_1, x_2),\\
+G(x_1, x_2) &= (x_2 \oplus x_1^4) \odot ((-2) \odot x_1^3 x_2^2 \oplus 0)^3 \odot x_1 \odot (x_2^3)^2,\\
+H(x_1, x_2) &= (1 \odot x_2 \oplus x_1) \odot ((-1) \odot x_1 \oplus x_2^3)^2 \odot (2 \odot x_1x_2^2 \oplus 0) \odot x_1^4.
 \end{align}
 $$
 
-The Netwon polytope $$\text{Newt(G)}$$ of $$G$$ is
+The Newton polytope $$\text{Newt(G)}$$ of $$G$$ is
 
 <img src="\assets\img\2022-06-20-TropicalML2\g.svg"  style="width:50%; display: block; margin-left: auto; margin-right: auto;" >,
 
-the Netwon polytope $$\text{Newt(H)}$$ of $$H$$ is
+the Newton polytope $$\text{Newt(H)}$$ of $$H$$ is
 
 <img src="\assets\img\2022-06-20-TropicalML2\h.svg"  style="width:50%; display: block; margin-left: auto; margin-right: auto;" >
 
-while the Netwon polytope $$\text{Newt(F)}$$ of $$F$$ is
+while the Newton polytope $$\text{Newt(F)}$$ of $$F$$ is
 
 <img src="\assets\img\2022-06-20-TropicalML2\f.svg"  style="width:70%; display: block; margin-left: auto; margin-right: auto;" >
 
-Note that $$\text{Newt(F)}$$ is the convex hull of the union of the previous two. These images are from the paper.
+Note that $$\text{Newt(F)}$$ is the convex hull of the union of the previous two. These three images are from the original paper.
+
+From the Newton polytopes we can construct the tropical curves defined by...
