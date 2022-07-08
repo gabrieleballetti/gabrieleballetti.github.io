@@ -47,14 +47,29 @@ $$
 \Phi(\mathbf{x}) = \max \left\{0, \sum_{i} w_i (F^{(L-1)}_i(\mathbf{x}) - G^{(L-1)}_i(\mathbf{x})) + b \right\}.
 $$
 
-At this point we can again manipulate the expression using the property substracting all negative terms inside the max, and adding them outside.
+At this point we can again manipulate the expression substracting all negative terms inside the max, and adding them outside as in
 
 $$
-\scriptsize
-\Phi(\mathbf{x}) = \max \left\{\sum_{i | w_i < 0} (-w_i) F^{(L-1)}_i(\mathbf{x}) + \sum_{i | w_i > 0}  w_i G^{(L-1)}_i(\mathbf{x}), \sum_{i | w_i > 0} w_i F^{(L-1)}_i(\mathbf{x}) + \sum_{i | w_i < 0}  (-w_i) G^{(L-1)}_i(\mathbf{x}) + b \right\} - \left( \sum_{i | w_i < 0} (-w_i) F^{(L-1)}_i(\mathbf{x}) + \sum_{i | w_i > 0}  w_i G^{(L-1)}_i(\mathbf{x}) \right).
+\max \{ 0, a - b \} = \max \{ b , a \} - b
 $$
 
-This is a bit intimidating, but what matters is that it is a difference of two terms, and both these terms are sum, product and exponentiations of tropical polynomials and thus they are both tropical polynomials. This means that $$\Phi$$ is of the form
+where $$a$$ and $$b$$ are positive integers. This will allow us to ''remove all the $$-$$ from the $$\max$$'':
+
+$$
+\Phi(\mathbf{x}) = f(\mathbf{x}) - g(\mathbf{x})
+$$
+
+with
+
+$$
+\begin{align}
+f(\mathbf{x}) &= \max\left\{ g(\mathbf{x}), h(\mathbf{x})\right\},\\
+g(\mathbf{x}) &= \sum_{i | w_i < 0} (-w_i) F^{(L-1)}_i(\mathbf{x}) + \sum_{i | w_i > 0}  w_i G^{(L-1)}_i(\mathbf{x}),\\
+h(\mathbf{x}) &= \sum_{i | w_i > 0} w_i F^{(L-1)}_i(\mathbf{x}) + \sum_{i | w_i < 0}  (-w_i) G^{(L-1)}_i(\mathbf{x}) + b.
+\end{align}
+$$
+
+This is a bit intimidating, but what matters is that it is a difference of two expressions $$f(\mathbf{x})$$ and $$g(\mathbf{x})$$, and both these terms are sum, product and exponentiations of tropical polynomials and thus they are both tropical polynomials. This means that $$\Phi$$ is of the form
 
 $$
 \Phi(\mathbf{x}) = F(\mathbf{x}) \oslash G(\mathbf{x}),
@@ -97,14 +112,14 @@ Iteratively applying this result to our deep networks setting - a network $$\Phi
 
 ### An example, a tiny ReLU MLP
 
-As an example, consider a MLP with two input neurons, a hidden layer with three neurons and a single output neuron, with ReLU activations at each non-input neuron.
+As an example we follow Example C.2 from [Zhang et al.](https://arxiv.org/abs/1805.07091), which has very nice pictures. Consider a MLP with two input neurons, a hidden layer with five neurons and a single output neuron, with ReLU activations at each non-input neuron.
 
 <img src="\assets\img\2022-06-20-TropicalML2\tiny_mlp.svg"  style="width:50%; display: block; margin-left: auto; margin-right: auto;" >
 
 Then this network defines a map $$\Phi$$ mapping the input $$(x_0, x_1)$$ as
 
 $$
-\Phi(x_0, x_1) = \max \left\{0,  \sum_{i = 0}^2  w^{(2)}_i \max \left\{0, w^{(1)}_{i,0} x_0 + w^{(1)}_{i,1} x_1 + b^{(1)}_i \right\} + b^{(2)}\right\}.
+\Phi(x_1, x_2) = \max \left\{0,  \sum_{i = 1}^5  w^{(2)}_i \max \left\{0, w^{(1)}_{i,1} x_1 + w^{(1)}_{i,2} x_2 + b^{(1)}_i \right\} + b^{(2)}\right\}.
 $$
 
 for some weights and biases. We now fix some values for them:
@@ -112,33 +127,57 @@ for some weights and biases. We now fix some values for them:
 $$
 \mathbf{w}^{(1)} = 
 \begin{pmatrix}
-1 & 3\\
--2 & -1\\
-2 & -1\\
+-1 &  1\\
+ 1 & -3\\
+ 1 &  2\\
+-4 &  1\\
+ 3 &  2\\
 \end{pmatrix}, \quad
 \mathbf{b}^{(1)} = 
 \begin{pmatrix}
 1\\
--2\\
 -1\\
+2\\
+0\\
+-2\\
 \end{pmatrix}, \quad
 \mathbf{w}^{(2)} = 
 \begin{pmatrix}
 1\\
--2\\
+2\\
 1\\
+-1\\
+-3\\
 \end{pmatrix}, \quad
 b^{(2)}= 0.
 $$
 
-By applying the "weights-moving" procedure we described earlier we can find the following explicit expression for $$\Phi(x_0, x_1)$$:
+By applying the "negative-weights-moving" procedure we described earlier we can find an explicit expression for $$\Phi(x_0, x_1)$$:
 
 $$
-\Phi(x_0, x_1) = \max \left\{4x_0 + 3 x_1, x_1 - 4, 6x_0 + 2x_1 -3 \right\} - \max \left\{4x_0 + 3 x_1, x_1 - 4 \right\},
+\Phi(x_0, x_1) = F(x_0, x_1) \oslash G(x_0, x_1)
 $$
 
-which tropically can be written as the quotient
+with
 
 $$
-\Phi(x_0, x_1) = \left( x_0^4 x_1^3 \oplus (-4) \odot x_1  \oplus (-3) \odot x_0^6 x_1^2 \right) \oslash \left( x_0^4 x_1^3 \oplus (-4) \odot x_1  \right).
+\begin{align}
+F(x_0, x_1) &= G(x_0, x_1) \oplus H(x_0, x_1),\\
+G(x_0, x_1) &= (x_2 \oplus x_1^4) \odot ((-2) \odot x_1^3 x_2^2 \oplus 0)^3 \odot x_1 \odot (x_2^3)^2,\\
+H(x_0, x_1) &= (1 \odot x_2 \oplus x_1) \odot ((-1) \odot x_1 \oplus x_2^3)^2 \odot (2 \odot x_1x_2^2 \oplus 0) \odot x_1^4.
+\end{align}
 $$
+
+The Netwon polytope $$\text{Newt(G)}$$ of $$G$$ is
+
+<img src="\assets\img\2022-06-20-TropicalML2\g.svg"  style="width:50%; display: block; margin-left: auto; margin-right: auto;" >,
+
+the Netwon polytope $$\text{Newt(H)}$$ of $$H$$ is
+
+<img src="\assets\img\2022-06-20-TropicalML2\h.svg"  style="width:50%; display: block; margin-left: auto; margin-right: auto;" >
+
+while the Netwon polytope $$\text{Newt(F)}$$ of $$F$$ is
+
+<img src="\assets\img\2022-06-20-TropicalML2\f.svg"  style="width:70%; display: block; margin-left: auto; margin-right: auto;" >
+
+Note that $$\text{Newt(F)}$$ is the convex hull of the union of the previous two. These images are from the paper.
