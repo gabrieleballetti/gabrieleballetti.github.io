@@ -103,7 +103,7 @@ $$
 \sum_{j = 0}^n(-1)^{n-j} { m - i - j \choose n-j} \sum_{S \in {[m] \choose j}} \prod_{i \in S} f_0(P_i)
 $$
 
-where $$f_0(P_i)$$ denotes the number of vertices of $$P_i$$. From this bound one can deduce that the maximum number of linear region of a shallow network with $$n$$ inputs and a single layer of ReLU units is
+where $$f_0(P_i)$$ denotes the number of vertices of $$P_i$$. From this bound one can deduce that the maximum number of linear region of a shallow network with $$n$$ inputs and a single layer of $$m$$ ReLU units is
 
 $$
 \sum_{j = 0}^n {m \choose j},
@@ -183,6 +183,8 @@ while the Newton polytope $$\text{Newt(F)}$$ of $$F$$ is
 
 <img src="\assets\img\2022-06-20-TropicalML2\f.svg"  style="width:70%; display: block; margin-left: auto; margin-right: auto;" >
 
-Note that $$\text{Newt(F)}$$ is the convex hull of the union of the previous two. These three images are from the original paper.
+Note that $$\text{Newt(F)}$$ is the convex hull of the union of the previous two. These three images are from the original paper. We also point out that two triangles containing the segment $$\text{conv}\{(7,3),(14,12)\}$$ are coplanar, so the segment should not have been drawn.
 
-From the Newton polytopes we can construct the tropical curves defined by...
+From the subdivided Newton polytope one can easily deduce information about the tropical curves defined by $$G$$, $$H$$ and $$F$$, they are represented below, in respective order.
+
+<img src="\assets\img\2022-06-20-TropicalML2\curves.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >

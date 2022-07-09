@@ -19,8 +19,6 @@ Studying such linear regions is an important step in the understanding of deep n
 
 An important tool for this kind of investigations has been Tropical Geometry. It turns out that **the family of ReLU/Maxout neural network functions corresponds with the family of tropical rational maps** ([Zhang et al.](https://arxiv.org/abs/1805.07091)). Now, once one familiarizes both with the structure of these networks and the theory of Tropical Geometry, it turns out that this result is quite straightforward. The key of this connection is instead that tools which are used to deal with tropical varieties can now be used to investigate the decision boundaries of neural networks, and observe how training affects them.
 
-I am going to present this connection in a series of blog posts. In this first one I focus on the math part, introducing the main ideas behind Tropical Geometry.
-
 ## An (illustrated) introduction to Tropical Geometry
 Tropical Geometry is a relatively recent field of study in mathematics - laying somewhere between algebraic geometry and combinatorics - where the traditional study of algebraic varieties is substituted by the study of some polyhedral objects, defined by interpreting the polynomials over the *tropical semiring*. The best reference for tropical geometry is the book *Introduction to Tropical Geometry* by Diane Maclagan and Bernd Sturmfels. In it you will find the slogan "a tropical variety is a *combinatorial shadow* of the original variety", which is now is repeated as a mantra in paper and conferences (1870 results on Google for ["combinatorial shadow of"](https://www.google.com/search?q=%22combinatorial+shadow+of%22), probably all from this context). Remember to use it if you write a paper on this subject.
 
