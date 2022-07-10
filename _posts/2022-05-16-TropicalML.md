@@ -3,10 +3,6 @@ layout: post
 title:  "Piecewise linear activations: Machine Learning meets Tropical Geometry (Part 1)"
 ---
 
-<img src="\assets\img\2022-05-16-TropicalML\quartic_surf.svg"  style="width:40%; display: block; margin-left: auto; margin-right: auto;" >
-
-> What tropical surfaces look like (a tropical quartic surface, from [this paper](https://arxiv.org/abs/1806.02236) )
-
 Activation functions decide what is to be fired to the following neuron in a neural network depending on the input signal received. Since they generally are the only nonlinear component in a model architecture, they are what truly allows networks to learn complex patterns, as without them network would only approximate linear functions (and most of their structure would be redundant). Although traditionally the sigmoid was the most common choice for an activation function, in modern neural network the default recommendation is to use the *Rectified Linear Unit* (ReLU) defined as $$x \mapsto \max(0,x)$$, or a more general *Leaky ReLU* $$x \mapsto \max(ax,x)$$, or a even more general *Maxout unit*. All these activation functions are *piecewise linear*, meaning that their graphs are composed of straight-line segments.
 
 <img src="\assets\img\2022-05-16-TropicalML\activation_functions.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
@@ -74,6 +70,10 @@ And here is the algebraic tropical *quadric* (curve of degree two) it defines. I
 As we increase the degree of the polynomials, curves get more complex. Here is what a degree fifteen tropical curve with random integer coefficients looks like.
 
 <img src="\assets\img\2022-05-16-TropicalML\tropical_curve_random.svg"  style="width:60%; display: block; margin-left: auto; margin-right: auto;" >
+
+And here is an example of a tropical *surface* (image from [this paper](https://arxiv.org/abs/1806.02236)).
+
+<img src="\assets\img\2022-05-16-TropicalML\quartic_surf.svg"  style="width:40%; display: block; margin-left: auto; margin-right: auto;" >
 
 There are several clues that confirm that with these definitions we are onto something. Every mathematician's favorite example is the tropical version of ***Bézout's Theorem***. In the classical settings it states that two algebraic curves defined by polynomials of degrees $$c$$ and $$d$$ intersects in $$cd$$ points. Here the result is loosely stated, as it holds for "generic" curves defined on an algebraically closed field, and one need a notion of multiplicity when there is tangency. Usually it is stated for projective curves, as it takes a cleaner form. Anyway it should not sound too weird: two lines intersect in one point, a line and an ellipse intersect in two (possibly complex) points, two ellipses intersect in four (possibly complex) points, and so forth. The very same theorem holds tropically, and - if possible - it holds in a cleaner way, meaning that we do not need extra hypotheses such as working with complex numbers, or assuming that the curves have been chosen "generically" enough. All we need a concept of *stable* intersection to handle the cases where two curves are aligned (if you want to know more, have a look to Corollary 1.3.4 in the referenced book). In the example below we can see a line (orange, a degree one algebraic curve) intersecting a cubic (blue, a degree three algebraic curve) in three points, both in a classical and tropical environment.
 
