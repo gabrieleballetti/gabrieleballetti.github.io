@@ -188,3 +188,5 @@ Note that $$\text{Newt(F)}$$ is the convex hull of the union of the previous two
 From the subdivided Newton polytope one can easily deduce information about the tropical curves defined by $$G$$, $$H$$ and $$F$$, they are represented below, in respective order.
 
 <img src="\assets\img\2022-06-20-TropicalML2\curves.svg"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >
+
+> Source code for the images: [matplotlib](https://github.com/gabrieleballetti/unsolicited-tikz-pics/tree/main/tikz/TropicalML2), [tropical curves plotter](https://github.com/gabrieleballetti/tropical-curve-plotter).

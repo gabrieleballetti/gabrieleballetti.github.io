@@ -161,5 +161,4 @@ Something else we might notice is that there are two kind of linear regions in t
 Source code for the other images:
 [matplotlib](https://github.com/gabrieleballetti/unsolicited-tikz-pics/tree/main/matplotlib/TropicalML1).
 
-> Part two will come soon.
 
