@@ -97,7 +97,7 @@ Note that this choice has the effect of discoloring outside a circle, while keep
 
 # Implementation and choice of parameters
 
-The implementation of the algorithm is [available on my GitHub](https://github.com/gabrieleballetti/string-art). I have followed quite closely the algorithm described above, the only difference is that instead of modifying the original image $$I_0$$, I use a "draft" image $$D_k$$ where I progressively add all the opaque lines which then I "subtract" from $$I_0$$. Formally, $$D_0$$ is a white image and
+The implementation of the algorithm is [available on my GitHub](https://github.com/gabrieleballetti/string-art). It is written in C++ and I have followed quite closely the algorithm described above, the only difference is that instead of modifying the original image $$I_0$$, I use a "draft" image $$D_k$$ where I progressively add all the opaque lines which then I "subtract" from $$I_0$$. Formally, $$D_0$$ is a white image and
 
 $$
 \begin{align*}
@@ -133,7 +133,6 @@ On the [post on Possibly Wrong](https://possiblywrong.wordpress.com/2022/01/22/s
 Regarding the algorithm used, it seems like I have basically reinvented the wheel, as most of the implementations I have looked up seem to follow a similar logic. Birsak et al. - beside several other improvements and technicalities - instead of opacity use a block-based upscaling where a pixel of the original image corresponds to a block, and when multiple threads pass through that block they update the fraction of its area which is covered, then they transform this fraction into a gray tone which is finally compared against the original pixel. This approach has the advantage to automatically set the correct the ''opacity'' when changing the scale factor, while with my implementation they are independent and the opacity is manually set. 
 
 At the end of the day, I am extremely satisfied with the results and the path leading me to the final version, and comparing the outputs with those on the original paper it seems that - and here I might be very wrong - the conversion from list of nails $$n_0, n_1, \ldots$$ to a computer image makes as big of a difference as the algorithm used, at least for these large values. I use a Bresenham line black-or-white approach, where probably a antialiased line with an alpha channel would have made the result sharper. Maybe I could have tried to output the image as a .svg, and let the conversion do the rest. 
-
 
 
 
