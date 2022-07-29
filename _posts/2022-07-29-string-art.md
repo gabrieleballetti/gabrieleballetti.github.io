@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Fun with string art"
+post_image: '<img src="\assets\img\2022-07-29-string-art\aec.png"  style="width:60%; display: block; margin-left: auto; margin-right: auto;" >'
 ---
 
 String art is a technique to draw by weaving a string between nails, obtaining a picture entirely composed of straight lines. Its origins are probably ancient, but a computational approach to produce photorealistic results has been popularized by artist Petros Vrellis in 2016.

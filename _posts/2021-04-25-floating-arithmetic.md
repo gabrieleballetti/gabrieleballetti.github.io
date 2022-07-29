@@ -1,6 +1,7 @@
 ---
 layout: post
-title:  "Floating arithmetic, a mathematical point of view"
+title: "Floating arithmetic, a mathematical point of view"
+post_image: '<img src="\assets\img\2021-04-25-floating-arithmetic\floats_distribution.png" style="width:80%; display: block; margin-left: auto; margin-right: auto;" >'
 ---
 
 As Donald E. Knuth puts it in his second volume of *The Art of Computer Programming* "Every well-rounded programmer ought to have a knowledge of what goes on during the elementary steps of floating point arithmetic". Despite I would be totally justified, not being a well-rounded programmer at all, I still decided to look a bit into the topic, rewriting some of my notes in this post (but others will come). The subject turned out to be surprisingly interesting and full of extremely smart techniques and ideas. I collect my perspective as a mathematician of what I found out in a little series of posts. Beside Knut's second volume of TAOCP, I also found an amazing source in David Goldberg's paper [*What Every Computer Scientist Should Know About Floating-Point Arithmetic*](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html). As you can see they are quite insistent on the fact that people should know more about it.

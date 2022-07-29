@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Piecewise linear activations: Machine Learning meets Tropical Geometry (Part 2)"
+post_image: '<img src="\assets\img\2022-06-20-TropicalML2\curves.svg"  style="width:60%; display: block; margin-left: auto; margin-right: auto;" >'
 ---
 
 In [the previous part]({% post_url 2022-05-16-TropicalML %}) we gave an introduction to Tropical Geometry. We spoke about tropical varieties, why it makes sense to define them the way they are defined, and how their Newton polytopes can be used to deduce information about their combinatorial structure. We now talk about how these tools can be used to get a better understanding of decision boundaries of neural network and how they are influenced by the structure of the network.
