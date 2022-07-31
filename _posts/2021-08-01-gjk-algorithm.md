@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Minkowski sums and the GJK algorithm"
-post_image: '<img src="\assets\img\2021-08-01-gjk-algorithm\minkowski_sum.svg"  style="width:60%; display: block; margin-left: auto; margin-right: auto;" >'
+post_image: '<img src="\assets\img\2021-08-01-gjk-algorithm\preview.png"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >'
 ---
 
 The Gilbert-Johnson-Keerthi algorithm is a fast and efficient way to compute a pair of closest point between two convex objects, and - in particular - to find out if they have a common intersection or how far from each other they are. The main idea on which the algorithm is based is simple and beautiful, as it uses the concept of Minkowski sum (difference, in this case) to transform and simplify a problem between two bodies in a problem between a single body and a point.

@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Fun with string art"
-post_image: '<img src="\assets\img\2022-07-29-string-art\aec.png"  style="width:60%; display: block; margin-left: auto; margin-right: auto;" >'
+title:  "My attempt at string art"
+post_image: '<img src="\assets\img\2022-07-29-string-art\preview.png"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >'
 ---
 
 String art is a technique to draw by weaving a string between pins, obtaining a picture entirely composed of straight lines. Its origins are probably ancient, but a computational approach to produce photorealistic results has been popularized by artist Petros Vrellis in 2016.
@@ -59,9 +59,17 @@ This is already an improvement from the previous attempt, as we can see some det
 
 ### The final algorithm
 
-Note how the previous algorithm sketches some details, like the eyes, but then does not define them properly. The reason seems to be that the intermediate image $$I_k$$ loses information about these details too fast, as they quickly get whitened by the previous lines. The next step is then to be more conservative with this whitening process, and instead of subtracting a black line from $$I_k$$ to obtain $$I_{k+1}$$, we subtract a gray one with some opacity. Opacity works multiplicatively, intuitively this means that initially the lines will brighten up faster than bright ones. On the canvas this has the effect of forcing more lines to overlap on darker spots. This means that, if fix a value $$o \in [0,1]$$ for the opacity, we update the image $$I_k$$ as
+Note how the previous algorithm sketches some details, like the eyes, but then does not define them properly. The reason seems to be that the intermediate image $$I_k$$ loses information about these details too fast, as they quickly get whitened by the previous lines. The next step is then to be more conservative with this whitening process, and instead of subtracting a black line from $$I_k$$ to obtain $$I_{k+1}$$, we subtract a gray one, or - better - we subtract a black line multiplied by an *opacity value* $$o \in (0,1)$$. Opacity works multiplicatively, intuitively this means that lines will brighten up dark regions faster than brighter ones. On the output image this has the effect of forcing more lines to overlap on darker spots. To do this operation in a cleaner way I used a *draft image* $$D_0$$, which is initialized as a white image of the same size as the input image $$I_0$$, and we progressively add lines with some transparency to it. Formally, at the step $$k > 0$$ we update the draft image as follow
 
-$$I_k = I_{k-1} - o \cdot \ell_{p_{k-1}, p_k}, \text{ for } k > 0.$$
+$$
+D_k = D_{k-1} + o \cdot \ell_{k-1, k}.
+$$
+
+We can think of what previously was $$I_k$$ as $$I_0 - D_{k-1}$$, with the difference that now we are subtracting a whole range of gray pixels, instead of just black ones. The advantage of using $$D_k$$ is that sometimes we might end up overshooting, and get pixels on the draft image which are darker than on the input image. If we simply keep track of lines by whitening $$I_0$$, this occurrences will not be recorded, as pixel will not get whiter than white. On the other hand by using $$D_k$$ we can decide to minimize both $$I_0$$ and the *negative* $$\overline{D_k} = W - D_k$$ of the draft image $$D_k$$ at the same time:
+
+$$f'_{I_k,p_k}(n) = \frac{\int_{x \in \ell_{p_{k},n}} I_0(x) + \overline{D_k}(x) dx}{\text{length}(\ell_{p_{k},n})}.$$
+
+Above, $$W$$ is the value corresponding to a complete white pixel (e.g. 255 for 8-bits grayscale).
 
 This worked like a charm, here are some results for different values of opacity.
 
@@ -97,16 +105,7 @@ Note that this choice has the effect of discoloring outside a circle, while keep
 
 # Implementation and choice of parameters
 
-The implementation of the algorithm is [available on my GitHub](https://github.com/gabrieleballetti/string-art). It is written in C++ and I have followed quite closely the algorithm described above, the only difference is that instead of modifying the original image $$I_0$$, I use a "draft" image $$D_k$$ where I progressively add all the opaque lines which then I "subtract" from $$I_0$$. Formally, $$D_0$$ is a white image and
-
-$$
-\begin{align*}
-D_k &= D_{k-1} + \ell_{k-1, k}, &\text{ for } k > 0,\\
-I_k &= I_0 - D_{k-1}, &\text{ for } k > 0.
-\end{align*}
-$$
-
-I added a bunch of arguments to granularly control all the parameters I have discussed so far
+The implementation of the algorithm is [available on my GitHub](https://github.com/gabrieleballetti/string-art). It is written in C++ and I have followed quite closely the algorithm described above. I added a bunch of arguments to granularly control all the parameters I have discussed so far. Here is how a call to the script looks like:
 
 ```
 string_art input.pgm num_pins opacity threshold skipped_neighbors output_scale output.pgm
@@ -119,7 +118,7 @@ The opacity and threshold arguments can be used to tweak the final result, see t
 <em>String art portraits of Ada Lovelace with 256 pins, for different values of opacity and threshold.</em>
 </p>
 
-For parsing the image and the other argument I readapted the [code from Possibly Wrong](https://github.com/possibly-wrong/string-art). The input and output images are square binary "P5" .pgm (portable graymap) images, as it is easy to read and write.
+For parsing the image and the other argument I readapted the [code from Possibly Wrong](https://github.com/possibly-wrong/string-art). The input and output images are square binary "P5" .pgm (portable graymap) images, as they are easy to read and write.
 
 ### Results and comparisons
 

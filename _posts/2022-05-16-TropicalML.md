@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Piecewise linear activations: Machine Learning meets Tropical Geometry (Part 1)"
-post_image: '<img src="\assets\img\2022-05-16-TropicalML\duality2.svg"  style="width:50%; display: block; margin-left: auto; margin-right: auto;" >'
+post_image: '<img src="\assets\img\2022-05-16-TropicalML\preview.png"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >'
 ---
 
 Activation functions decide what is to be fired to the following neuron in a neural network depending on the input signal received. Since they generally are the only nonlinear component in a model architecture, they are what truly allows networks to learn complex patterns, as without them network would only approximate linear functions (and most of their structure would be redundant). Although traditionally the sigmoid was the most common choice for an activation function, in modern neural network the default recommendation is to use the *Rectified Linear Unit* (ReLU) defined as $$x \mapsto \max(0,x)$$, or a more general *Leaky ReLU* $$x \mapsto \max(ax,x)$$, or a even more general *Maxout unit*. All these activation functions are *piecewise linear*, meaning that their graphs are composed of straight-line segments.

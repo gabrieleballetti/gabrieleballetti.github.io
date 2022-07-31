@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Determining non-deterministic code"
+post_image: '<img src="\assets\img\2022-03-20-non-determinism\preview.png"  style="width:100%; display: block; margin-left: auto; margin-right: auto;" >'
 ---
 
 I have spent the last two days at work trying to understand why some test was behaving so weirdly. It should have been passing all the time, but it would randomly fail without a good reason. For a bit we went on by lowering some thresholds to allow some "light failures", but there was no reasons for this to happen, nor any guarantee that it would not fail regardless. When I finally decided to address this I took advantage of the occasion to do a bit of research on the topic, which I am sharing here.
