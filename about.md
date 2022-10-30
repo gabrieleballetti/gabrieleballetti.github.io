@@ -4,9 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Hi, I'm Gabriele Balletti, a Stockholm based researcher and developer with an academic background in discrete geometry and computational mathematics. I left academia in early 2019 to work in the gaming industry. My main interests are computer vision/graphics, and I recently got into AI and deep learning.
-
-I'm currently working in the R&D team of Gleechi, a Stockholm startup focusing on real-time human interaction in Virtual Reality.
+Hi, I'm Gabriele Balletti, a Stockholm based researcher and developer currently working as a machine learning engineer in the medical images team at ReySearch Laboratories, where we develop software used in treatment for cancer. I'm interested in the whole spectrum of machine learning, from the theoretical foundations to the applications, and I have an academic background in discrete geometry and computational mathematics.
 
 I use this page as a sort of notebook, dumping material from my notes or presentations I gave at work/university. Don't expect anything fancy!
 
