@@ -1,0 +1,35 @@
+.post-content {
+    color: var(--content);
+    font-size: 16px;
+}
+
+.post-content figure > figcaption {
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: lighter;
+    margin: 8px 10% 16px;
+}
+
+.post-content figure > figcaption > p {
+    color: var(--secondary);
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.post-content img[src*="#center80"] {
+    margin: 1rem auto;
+    width: 80%;
+    height: auto
+}
+
+.post-content img[src*="#center60"] {
+    margin: 1rem auto;
+    width: 60%;
+    height: auto
+}
+
+.post-content img[src*="#center40"] {
+    margin: 1rem auto;
+    width: 40%;
+    height: auto
+}
