@@ -8,7 +8,7 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-googleAnalytics: UA-123-45
+googleAnalytics: G-2P6MQF79PV
 
 minify:
   disableXML: true
@@ -80,7 +80,7 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Welcome!"
-    Content: "An unsolicited collection of random notes on mathematics, algorithms and machine learning. Now with nice drawings! \U0001F308"
+    Content: "An unsolicited collection of random notes on machine learning, maths and algorithms. Now with nice drawings! \U0001F308"
 
   socialIcons:
     - name: github
