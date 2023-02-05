@@ -1,4 +1,4 @@
-baseURL: "https://examplesite.com/"
+baseURL: "https://gabrieleballetti.github.io/"
 title: Gabriele Balletti
 paginate: 5
 theme: PaperMod
@@ -8,7 +8,7 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-googleAnalytics: G-2P6MQF79PV
+googleAnalytics: UA-84781080-3
 
 minify:
   disableXML: true
