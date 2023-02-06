@@ -25,9 +25,9 @@ params:
   title: Gabriele Balletti
   # description: "ExampleSite description"
   #keywords: [Blog, Portfolio, PaperMod]
-  # author: Me
+  author: Gabriele Balletti
   # author: ["Me", "You"] # multiple authors
-  images: ["<link or path of image for opengraph, twitter-cards>"]
+  # images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "2006-01-02"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
@@ -106,9 +106,9 @@ params:
     hiddenInSingle: true # hide on single page
 
   editPost:
-    URL: "https://github.com/gabrieleballetti/gabrieleballetti.github.io/content"
+    URL: "https://github.com/gabrieleballetti/gabrieleballetti.github.io/issues"
     Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
+    appendFilePath: false # to append file path to Edit link
 
   # for search
   # https://fusejs.io/api/options.html
