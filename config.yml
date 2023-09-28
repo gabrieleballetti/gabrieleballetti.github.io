@@ -126,18 +126,23 @@ menu:
       name: posts
       url: /
       weight: 10
-    - identifier: search
-      name: search
-      url: /search/
-      weight: 15
-    - identifier: tags
-      name: tags
-      url: /tags/
-      weight: 20
+    # - identifier: search
+    #   name: search
+    #   url: /search/
+    #   weight: 15
+    # - identifier: tags
+    #   name: tags
+    #   url: /tags/
+    #   weight: 20
     - identifier: about
       name: about
       url: /about/
       weight: 30
+    - identifier: research
+      name: research
+      url: /research/
+      weight: 30
+
     # - identifier: categories
     #   name: categories
     #   url: /categories/
