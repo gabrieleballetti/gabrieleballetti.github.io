@@ -87,8 +87,8 @@ params:
       url: "https://github.com/gabrieleballetti"
     - name: linkedin
       url: "https://www.linkedin.com/in/gabriele-balletti"
-    - name: twitter
-      url: "https://twitter.com/gbrlblltt"
+    # - name: twitter
+    #   url: "https://twitter.com/gbrlblltt"
     - name: rss
       url: posts/index.xml
 
