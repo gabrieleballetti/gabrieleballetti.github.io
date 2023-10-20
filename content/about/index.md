@@ -9,4 +9,4 @@ I periodically end up doing some research in mathematics, see my [academic page]
 
 If you want to get in touch with me you can either add me on [LinkedIn](https://www.linkedin.com/in/gabriele-balletti/) or just use my personal mail `gabriele . balletti at gmail dot com`.
 
-![a family picture](photo.jpg "A photo with my family. I'm the one in the middle.")
+![a family picture](photo.jpg "A photo with my family. I'm the one with the yellow bike, standing.")
