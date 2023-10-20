@@ -1,10 +1,13 @@
 # My (former) academic page
 
 
-_In early 2019 I left academia for a job in the industry in the Stockholm area, where I live with my family. I currently focus on machine learning techniques in the field of cancer treatment. Although now I'm busy with other things, I'm still very happy to talk about my math research, so don't hesitate to reach out._
+_In early 2019 I left academia for a job in the industry in the Stockholm area, where I live with my family. I currently focus on machine learning techniques in the field of medical imaging for cancer treatment. Although now I'm busy with other things, I'm still very happy to talk about math, so don't hesitate to reach out._
 
-I do research in computational discrete geometry, trying to answer questions coming from combinatorics, commutative algebra and algebraic geometry.
-Although not exclusively, I like to focus on computer-assisted proofs in Ehrhart Theory, toric varieties, tropical geometry and related fields.
+I do research in computational discrete geometry. I use algorithms, AI and computer assisted proofs to answer questions in pure mathematics coming from combinatorics, commutative algebra and algebraic geometry.
+
+
+### News
+I wrote [a paper](https://arxiv.org/abs/2309.16848)! Comments are welcome.
 
 ### Publications
 - G. Balletti, A. Kasprzyk and B. Nill: On the maximum dual volume of a canonical Fano polytope, *Forum of Mathematics, Sigma* 10 (2022), e109 [[arXiv](https://arxiv.org/abs/1611.02455)].
@@ -19,7 +22,8 @@ Although not exclusively, I like to focus on computer-assisted proofs in Ehrhart
 
 ### Preprints
 
-- G. Balletti, A. Kasprzyk: Three-dimensional lattice polytopes with two interior lattice points, [[arXiv](https://arxiv.org/abs/1612.08918)].
+- G. Balletti: A genetic algorithm to search the space of Ehrhart h∗-vectors (2023), [[arXiv](https://arxiv.org/abs/2309.16848)].
+- G. Balletti, A. Kasprzyk: Three-dimensional lattice polytopes with two interior lattice points (2016), [[arXiv](https://arxiv.org/abs/1612.08918)].
 
 ### Datasets
 

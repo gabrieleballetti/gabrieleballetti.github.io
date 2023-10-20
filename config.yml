@@ -80,15 +80,13 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Welcome!"
-    Content: "An unsolicited collection of random notes on machine learning, maths and algorithms. Now with nice drawings! \U0001F308"
+    Content: "An unsolicited collection of random notes on machine learning, maths and algorithms. Now with nice pics! \U0001F308"
 
   socialIcons:
     - name: github
       url: "https://github.com/gabrieleballetti"
     - name: linkedin
       url: "https://www.linkedin.com/in/gabriele-balletti"
-    # - name: twitter
-    #   url: "https://twitter.com/gbrlblltt"
     - name: rss
       url: posts/index.xml
 
