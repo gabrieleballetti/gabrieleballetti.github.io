@@ -49,7 +49,7 @@ I wrote [a paper](https://arxiv.org/abs/2309.16848)! Comments are welcome.
 * 2017
     - September-October 2017 - Magdeburg, Germany - Research visit at OvGU
     - 17-23 September 2017 - Oberwolfach, Germany - Mini-Workshop: Lattice Polytopes: Methods, Advances, Applications
-    - 14-16 September 2017 - Magdeburg, Germany - [Interactions with Lattice Polytopes
+    - 14-16 September 2017 - Magdeburg, Germany - Interactions with Lattice Polytopes
     - 3-9 September 2017 - Lukecin, Poland - 40th Autumn School in Algebraic Geometry - Binomial Ideals
     - 14-27 August 2017 - Stockholm, Sweden - Stockholm Master Class in Tropical Geometry
     - 10 - 14 July 2017 - Osaka, Japan - The Prospects for Commutative Algebra

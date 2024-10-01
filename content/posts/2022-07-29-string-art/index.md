@@ -3,6 +3,7 @@ title: "My attempt at string art"
 date: 2022-07-09T21:21:45+01:00
 tags: ["art", "algorithms"]
 math: true
+hidden: true
 ---
 
 String art is a technique to draw by weaving a string between pins, obtaining a picture entirely composed of straight lines. Its origins are probably ancient, but a computational approach to produce photorealistic results has been popularized by artist Petros Vrellis in 2016.

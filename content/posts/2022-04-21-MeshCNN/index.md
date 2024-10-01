@@ -3,6 +3,7 @@ title:  "MeshCNN: a convolutional neural network for meshes"
 date: 2022-04-21T21:21:45+01:00
 tags: ["machine learning", "geometry", "mesh", "segmentation"]
 math: true
+draft: true
 ---
 
 ![head pic](T252.png#center)

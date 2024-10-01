@@ -79,8 +79,8 @@ params:
 
   # home-info mode
   homeInfoParams:
-    Title: "Welcome!"
-    Content: "An unsolicited collection of random notes on machine learning, maths and algorithms. Now with nice pics! \U0001F308"
+    # Title: ""
+    Content: ""
 
   socialIcons:
     - name: github
@@ -120,10 +120,10 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
-    - identifier: posts
-      name: posts
-      url: /
-      weight: 10
+    # - identifier: posts
+    #   name: posts
+    #   url: /
+    #   weight: 10
     # - identifier: search
     #   name: search
     #   url: /search/
@@ -132,9 +132,9 @@ menu:
     #   name: tags
     #   url: /tags/
     #   weight: 20
-    - identifier: about
-      name: about
-      url: /about/
+    - identifier: home
+      name: home
+      url: /
       weight: 30
     - identifier: research
       name: research
@@ -149,6 +149,9 @@ menu:
     #   name: example.org
     #   url: https://example.org
     #   weight: 30
+cascade:
+  _build:
+    list: never  # Disable the posts list page
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
